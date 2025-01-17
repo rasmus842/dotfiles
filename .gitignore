@@ -1,0 +1,9 @@
+# ignore all by default
+*
+!.gitignore
+!README.md
+!tmux/
+!tmux/tmux.conf
+!nvim/
+!nvim/**
+
