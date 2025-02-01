@@ -1,12 +1,15 @@
 ## Setup:
 
 1. Add following to ~/.bashrc:
-    - `alias vim='nvim'`
-    - `. "$HOME/.asdf/asdf.sh"`
-    - `. "$HOME/.asdf/completions/asdf.bash"`
-    - `export XDG_CONFIG_HOME="$HOME/.config"`
-    - `export PATH="$XDG_CONFIG_HOME/tmuxifier"`
-    - also check $TERM environment variable (should be `xterm-color256` ?)
+`
+    alias vim='nvim'
+    alias tmuxifier='tmx'
+    . "$HOME/.asdf/asdf.sh"
+    . "$HOME/.asdf/completions/asdf.bash"
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export PATH="$XDG_CONFIG_HOME/tmuxifier"
+`
+- also check $TERM environment variable (should be `xterm-color256` ?)
 
 ## Nerd fonts:
 
