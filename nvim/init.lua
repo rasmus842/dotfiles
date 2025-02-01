@@ -54,6 +54,5 @@ require("lazy").setup({
 })
 
 require("custom.rename")
-vim.api.nvim_set_keymap("n", "<leader>rn", ":lua RenameSymbolTelescope()<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_hl(0, "@comment", { fg = "#db4b4b" })

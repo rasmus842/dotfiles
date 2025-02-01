@@ -2,8 +2,9 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 
 function RenameSymbol(old_name, new_name)
-	-- Search for all occurrences of old_name in .ex and .exs files
-	local cmd = "rg --files-with-matches --no-heading --color=never --fixed-strings '"
+	-- Search for all occurrences of old_name
+	-- git aware
+	local cmd = "git ls-files | xargs rg --files-with-matches --no-heading --color=never --fixed-strings '"
 		.. old_name
 		.. "' | xargs sed -i 's/"
 		.. old_name
@@ -47,3 +48,9 @@ function RenameSymbolTelescope()
 		end,
 	})
 end
+
+vim.api.nvim_create_user_command("RenameSymbolTelescope", function(opts)
+	RenameSymbolTelescope()
+end, {})
+
+vim.api.nvim_set_keymap("n", "<leader>R", ":lua RenameSymbolTelescope()<CR>", { noremap = true, silent = true })
