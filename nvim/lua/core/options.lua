@@ -10,7 +10,7 @@ vim.opt.signcolumn = "yes" -- Keep signcolumn on by default (default: 'auto')
 -- Line wrapping and spacing
 vim.opt.wrap = false -- Diplay lines as one long line
 vim.opt.linebreak = true -- Companion to wrap, don't split words
-vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 999 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.sidescrolloff = 10 -- Minimal nubmer of screen columns either side of cursor if wrap is false
 -- vim.opt.whichwrap = 'bs' -- Which "horizontal" keys are allowed to travel to prev/next line (default: 'b,s')
 -- vim.opt.backspace = 'indent,eol,start' -- Allow backspace on (default: 'indent,eol,start')
@@ -63,4 +63,5 @@ vim.opt.timeoutlen = 300 -- Time to wait for mapped sequence to complete (defaul
 
 vim.opt.inccommand = "split" -- Preview substitutions live, as you type
 
+-- Make comments Red
 vim.api.nvim_set_hl(0, "@comment", { fg = "#dd0000" })

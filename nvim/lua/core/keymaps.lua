@@ -50,10 +50,11 @@ vim.keymap.set("n", "<C-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>")
 
 -- Tabs
-vim.keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-vim.keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>") -- got to previous tab
+-- NOTE: tabs seem useless imho. Id rather use another neovim session
+-- vim.keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
+-- vim.keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
+-- vim.keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
+-- vim.keymap.set("n", "<leader>tp", ":tabp<CR>") -- got to previous tab
 
 -- Sessions
 vim.keymap.set("n", "<leader>ss", ":mks! ~/nvim_session.vim<CR>") -- save session
@@ -62,6 +63,7 @@ vim.keymap.set("n", "<leader>rs", ":source ~/nvim_session.vim<CR>") -- restore s
 -- Toggle line wrapping
 vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>") -- enable/disable line wrappin when needed
 
+-- VISUAL MODE
 -- Stay in indent mode when indenting in visual
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
@@ -71,6 +73,16 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Shift visual selected line up
 
 -- Keep last yanked when pasting
 vim.keymap.set("v", "p", '"_dP')
+
+-- Highlight when yanking
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
+})
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
