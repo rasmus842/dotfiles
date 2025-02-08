@@ -40,6 +40,7 @@ require("lazy").setup({
 	require("plugins.misc.whick-key"), -- Hints keybinds
 	require("plugins.misc.autopairs"), -- Autoclose parens
 	require("plugins.misc.colorizer"), -- highlight colors in code: example #ff0000
+	require("plugins.misc.mini-jump"), -- make f,F,t,T able to jump to other lines
 	{
 		-- detect tabstop and shiftwidth automatically
 		"tpope/vim-sleuth",
