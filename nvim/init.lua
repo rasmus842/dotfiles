@@ -52,6 +52,8 @@ require("lazy").setup({
 	-- NOTE: hello
 	-- FIXME: needs fixing
 	require("plugins.misc.todo-comments"),
+
+	require("plugins.misc.tiny-inline-diagnostic"),
 })
 
 require("custom.rename")
