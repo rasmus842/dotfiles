@@ -43,6 +43,14 @@ see https://github.com/neovim/neovim and https://github.com/neovim/neovim/blob/m
     - Default install location is `/usr/local`
     - On Debian/Ubuntu, instead of `sudo make install`, you can try `cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb` to build DEB-package and install it. This helps ensure clean removal of installed files. Note: This is an unsupported, "best-effort" feature of the Nvim build.
 
+## Using neovim:
+1. elixir development:
+    - install elixir and erlang using asdf
+    - install elixir-ls
+
+2. emmet-language-server
+    - need npm installed for mason to automatically fetch it
+
 ## Customizing terminal
 1. install starship `curl -sS https://starship.rs/install.sh`
 2. Add to .bashrc: `eval "$(starship init bash)"`
