@@ -76,9 +76,15 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 					end
 				end, { desc = "Prev hunk" })
 
-				-- Toggles
+				-- Preview hunk
+				map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" })
+				map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline" })
+
+				-- Toggle
 				map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line blame" })
 				map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
+
+				--[[
 
 				-- Actions
 
@@ -89,16 +95,11 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 					gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 				end, { desc = "Stage selection" })
 
-				-- Reset changes in working directory
-				map("n", "<leader>gu", gitsigns.reset_hunk, { desc = "Reset hunk" })
-				map("n", "<leader>gU", gitsigns.reset_buffer, { desc = "Reset buffer" })
-				map("v", "<leader>gu", function()
-					gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-				end, { desc = "Reset selection" })
+				print("hi")
 
-				-- Preview hunk
-				map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" })
-				map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline" })
+				-- Reset changes in working directory
+				map("n", "<leader>gu", gitsigns.undo_stage_hunk, { desc = "Unstage hunk" })
+				map("n", "<leader>gU", ":!git restore --staged %<CR>", { desc = "Unstage buffer" })
 
 				map("n", "<leader>gb", function()
 					gitsigns.blame_line({ full = true })
@@ -122,6 +123,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 				-- yih -> Yank git hunk
 				-- cih -> Change git hunk
 				map({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "Select hunk" })
+				]]
 			end,
 		})
 	end,
