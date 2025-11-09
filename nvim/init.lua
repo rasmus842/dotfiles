@@ -25,6 +25,7 @@ require("lazy").setup({
 	require("plugins.code-support.lsp"), -- LSP for language support
 	require("plugins.code-support.autoformatting"), -- Autoformat
 	require("plugins.code-support.autocompletion"), -- Autocomplete
+	require("plugins.code-support.html-autotags"), -- Autoclose html tags
 
 	-- Git integration:
 	require("plugins.git.gitsigns"), -- git signs
