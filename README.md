@@ -23,12 +23,12 @@
 3. Make sure `~/.local/kitty.app/bin` is added to PATH
 4. Register kitty as a terminal application (user level for portability (Ensuse `~/.local/bin` is before `/usr/bin` in PATH):
 ```
-mkdir -p ~/.local/bin
-cat << 'EOF' > ~/.local/bin/x-terminal-emulator
-#!/bin/sh
-exec kitty "$@"
-EOF
-chmod +x ~/.local/bin/x-terminal-emulator
+sudo update-alternatives \
+  --install /usr/bin/x-terminal-emulator x-terminal-emulator ~/.local/kitty.app/bin 50
+```
+5. Use kitty by default:
+```
+sudo update-alternatives --config x-terminal-emulator
 ```
 
 ## tmux:
