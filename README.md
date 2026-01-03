@@ -18,7 +18,18 @@
 
 ## Terminal emulator - Kitty
 
-`curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin`
+1. Download latest kitty: ```curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin```
+2. Should install it to `~/.local/kitty.app`
+3. Make sure `~/.local/kitty.app/bin` is added to PATH
+4. Register kitty as a terminal application (user level for portability (Ensuse `~/.local/bin` is before `/usr/bin` in PATH):
+```
+mkdir -p ~/.local/bin
+cat << 'EOF' > ~/.local/bin/x-terminal-emulator
+#!/bin/sh
+exec kitty "$@"
+EOF
+chmod +x ~/.local/bin/x-terminal-emulator
+```
 
 ## tmux:
 
