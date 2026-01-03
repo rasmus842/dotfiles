@@ -29,11 +29,11 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 			},
 			auto_attach = true,
 			attach_to_untracked = false,
-			current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+			current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
 			current_line_blame_opts = {
 				virt_text = true,
 				virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-				delay = 1000,
+				delay = 700,
 				ignore_whitespace = false,
 				virt_text_priority = 100,
 				use_focus = true,
@@ -76,17 +76,10 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 					end
 				end, { desc = "Prev hunk" })
 
-				-- Preview hunk
+				-- View hunk
 				map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" })
 				map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline" })
-
-				-- Toggle
-				map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line blame" })
-				map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
-
-				--[[
-
-				-- Actions
+				map("n", "<leader>gw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
 
 				-- Stage changes in working directory
 				map("n", "<leader>ga", gitsigns.stage_hunk, { desc = "Stage hunk" })
@@ -95,27 +88,8 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 					gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 				end, { desc = "Stage selection" })
 
-				print("hi")
-
-				-- Reset changes in working directory
-				map("n", "<leader>gu", gitsigns.undo_stage_hunk, { desc = "Unstage hunk" })
-				map("n", "<leader>gU", ":!git restore --staged %<CR>", { desc = "Unstage buffer" })
-
-				map("n", "<leader>gb", function()
-					gitsigns.blame_line({ full = true })
-				end, { desc = "Blame line" })
-
-				-- Diffs
-				map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff this" })
-				map("n", "<leader>gD", function()
-					gitsigns.diffthis("~")
-				end, { desc = "Diff this -> :Gitsigns diffthis(~)" })
-
-				-- Quick-fix list
-				map("n", "<leader>gq", gitsigns.setqflist, { desc = "Gitsigns set quick-fix list" })
-				map("n", "<leader>gQ", function()
-					gitsigns.setqflist("all")
-				end, { desc = "Gitsigns set quick fix list (all)" })
+				-- Toggle current line blame
+				map("n", "<leader>gb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line blame" })
 
 				-- Text object
 				-- vih -> Select git hunk
@@ -123,7 +97,39 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 				-- yih -> Yank git hunk
 				-- cih -> Change git hunk
 				map({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "Select hunk" })
+
+				-- Reset (remove) changes from Working directory
+				map("n", "<leader>gu", gitsigns.undo_stage_hunk, { desc = "Reset hunk" })
+				map("n", "<leader>gU", ":!git reset %<CR>", { desc = "Reset buffer" })
+
+				--[[
+				-- Quick-fix list
+				map("n", "<leader>gq", gitsigns.setqflist, { desc = "Gitsigns set quick-fix list" })
+				map("n", "<leader>gQ", function()
+					gitsigns.setqflist("all")
+				end, { desc = "Gitsigns set quick fix list (all)" })
 				]]
+
+				--
+				--
+				-- Unused:
+				--
+				--
+
+				-- Diffs
+				--[[
+				map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff this" })
+				map("n", "<leader>gD", function()
+					gitsigns.diffthis("~")
+				end, { desc = "Diff this -> :Gitsigns diffthis(~)" })
+				--]]
+
+				-- Full blame line
+				--[[
+				map("n", "<leader>gb", function()
+					gitsigns.blame_line({ full = true })
+				end, { desc = "Blame line" })
+				--]]
 			end,
 		})
 	end,

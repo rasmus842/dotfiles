@@ -29,7 +29,7 @@ require("lazy").setup({
 
 	-- Git integration:
 	require("plugins.git.gitsigns"), -- git signs
-	-- require("tpope/vim-fugitive") -- powerful git integration
+	require("plugins.git.vim-fugitive"), -- powerful git integration
 	-- require("tpope/vim-rhubarb") -- github integration for vim-fugitive
 
 	-- integration with tmux and testing
