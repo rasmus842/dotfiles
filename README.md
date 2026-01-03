@@ -16,6 +16,10 @@
 1. Download an archive for example https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
 2. extract and place into `~/.local/share/fonts/` directory
 
+## Terminal emulator - Kitty
+
+`curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin`
+
 ## tmux:
 
 1. sudo apt install tmux
@@ -51,14 +55,9 @@ see https://github.com/neovim/neovim and https://github.com/neovim/neovim/blob/m
 2. emmet-language-server
     - need npm installed for mason to automatically fetch it
 
-## Customizing terminal
-1. install starship `curl -sS https://starship.rs/install.sh`
-2. Add to .bashrc: `eval "$(starship init bash)"`
-3. see [starship.rs](https://starship.rs) for help on configs and available presets 
-
 ## After:
 
-1. clone nvim, tmux, tmuxifier config from github
+1. clone kitty, nvim, tmux, tmuxifier config from github
 2. Run neovim to install plugins via Lazy
     - also download and setup required lsp-s
 3. run tmux and press <prefix>-I to install tmux plugins
