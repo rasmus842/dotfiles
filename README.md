@@ -35,8 +35,8 @@
     - ```which zsh```
     - ```zsh --version``` should output 5.9 or higher
 3. Set as default shell: ```chsh -s $(which zsh)```
-4. Setup .zshrc and .zprofile (source `zsh/zshrc.bak` and `zsh/zprofile.bak`)
-6. Load changes, either restart or ```exez zsh -l```
+4. Make zsh reference `~/.config/zsh` -> ```echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv```
+6. Load changes, either restart or ```exec zsh -l```
 7. Make checks:
     - is starship prompt working as expected? ```which starship```
     - ```echo $options[login]``` -> prints 'on' if login shell (login shell sources ~/.zprofile and then ~/.zshrc)
