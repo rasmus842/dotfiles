@@ -11,25 +11,20 @@
 `
 - also check $TERM environment variable (should be `xterm-color256` ?)
 
+
 ## Nerd fonts:
 
 1. Download an archive for example https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
 2. extract and place into `~/.local/share/fonts/` directory
+3. Select `JetBrainsMono Nerd Font` in system
 
-## Terminal emulator - Kitty
 
-1. Download latest kitty: ```curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin```
-2. Should install it to `~/.local/kitty.app`
-3. Make sure `~/.local/kitty.app/bin` is added to PATH
-4. Register kitty as a terminal application (user level for portability (Ensuse `~/.local/bin` is before `/usr/bin` in PATH):
-```
-sudo update-alternatives \
-  --install /usr/bin/x-terminal-emulator x-terminal-emulator ~/.local/kitty.app/bin 50
-```
-5. Use kitty by default:
-```
-sudo update-alternatives --config x-terminal-emulator
-```
+## Starship:
+
+1. Install: ```curl -sS https://starship.rs/install.sh```
+2. Add to .bashrc: ```eval (starship init bash)```
+3. see [starship.rs](https://starship.rs) for help on configs and available presets
+
 
 ## tmux:
 
@@ -40,6 +35,7 @@ sudo update-alternatives --config x-terminal-emulator
 4. tmuxifier
     - `git clone https://github.com/jimeh/tmuxifier.git $XDG_CONFIG_HOME/tmuxifier`
     - Add to ~/.profile, ~/.bash_profile or equivalent: `eval "$(tmuxifier init -)"`
+
 
 ## Installing neovim:
 
@@ -66,9 +62,10 @@ see https://github.com/neovim/neovim and https://github.com/neovim/neovim/blob/m
 2. emmet-language-server
     - need npm installed for mason to automatically fetch it
 
+
 ## After:
 
-1. clone kitty, nvim, tmux, tmuxifier config from github
+1. clone repo to import configs to `~/.config`
 2. Run neovim to install plugins via Lazy
     - also download and setup required lsp-s
 3. run tmux and press <prefix>-I to install tmux plugins

@@ -6,4 +6,5 @@
 !tmux/tmux.conf
 !nvim/
 !nvim/**
+!starship.toml
 
