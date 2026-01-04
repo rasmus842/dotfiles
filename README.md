@@ -17,6 +17,8 @@
 1. Download an archive for example https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
 2. extract and place into `~/.local/share/fonts/` directory
 3. Select `JetBrainsMono Nerd Font` in system
+    - gnome tweaks -> Fonts -> Mono ..
+    - Settings -> Fonts -> Mono ..
 
 
 ## Starship:
@@ -26,7 +28,25 @@
 3. see [starship.rs](https://starship.rs) for help on configs and available presets
 
 
-## tmux:
+## Z-shell (zsh):
+
+1. Install: ```sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting```
+2. Verify:
+    - ```which zsh```
+    - ```zsh --version``` should output 5.9 or higher
+3. Set as default shell: ```chsh -s $(which zsh)```
+4. Setup .zshrc and .zprofile (source `zsh/zshrc.bak` and `zsh/zprofile.bak`)
+6. Load changes, either restart or ```exez zsh -l```
+7. Make checks:
+    - is starship prompt working as expected? ```which starship```
+    - ```echo $options[login]``` -> prints 'on' if login shell (login shell sources ~/.zprofile and then ~/.zshrc)
+    - ```echo $ZSH_VERSION```
+    - ```echo $0``` -> `zsh`
+    - ```echo $PATH``` or ```echo $path```, ```which nvim```, ```which starship```, etc
+    - ``````
+8. Some gotchas:
+    - terminal emulator commonly starts non-login shell (ignores `~/.zprofile` and reads `~/.zshrc`)
+    - SSH commonly starts login shell (reads `~/.zprofile` and then `~/.zshrx`)
 
 1. sudo apt install tmux
 2. clone tmux config to `~/.config/tmux`
