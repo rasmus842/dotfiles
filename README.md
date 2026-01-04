@@ -48,6 +48,14 @@
     - terminal emulator commonly starts non-login shell (ignores `~/.zprofile` and reads `~/.zshrc`)
     - SSH commonly starts login shell (reads `~/.zprofile` and then `~/.zshrx`)
 
+## Alacritty
+
+1. Install: ```sudo apt install alacritty```
+2. Verify: ```which alacritty``` and ```alacritty --version```
+3. Config file `alacritty/alacritty.toml`
+
+## Tmux and tmuxifier:
+
 1. sudo apt install tmux
 2. clone tmux config to `~/.config/tmux`
 3. add tpm to `~/.tmux` directory
@@ -85,7 +93,7 @@ see https://github.com/neovim/neovim and https://github.com/neovim/neovim/blob/m
 
 ## After:
 
-1. clone repo to import configs to `~/.config`
+1. clone repo to import configs to `~/.config` (starship, zsh, alacritty, tmux configs)
 2. Run neovim to install plugins via Lazy
     - also download and setup required lsp-s
 3. run tmux and press <prefix>-I to install tmux plugins

@@ -9,3 +9,5 @@
 !starship.toml
 !zsh/
 !zsh/**
+!alacritty/
+!alacritty/**
