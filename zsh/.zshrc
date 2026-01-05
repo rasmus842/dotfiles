@@ -1,9 +1,3 @@
-export STARSHIP_CACHE="${XDG_CACHE_HOME:="$HOME/.cache"}/starship"
-
-[[ -r "XDG_CACHE_HOME/starship/init.zsh" ]] && source "$XDG_CACHE_HOME/starship/init.zsh"
-
-export COLORTERM=truecolor
-
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=20000
@@ -28,6 +22,10 @@ compinit
 # Optional: menu selection
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+zmodload zsh/complist
+bindkey -M menuselect '^I'  forward-char           # Tab
+bindkey -M menuselect '^[[Z' reverse-menu-complete  # Shift+Tab
 
 # Alacritty / tmux: nice terminal title
 case "$TERM" in
@@ -73,6 +71,18 @@ export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 if [[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
+# Accept just one word with Ctrl+Right
+bindkey '^[OC' autosuggest-accept-word
+bindkey '^[OF' autosuggest-accept-word  # fallback for some terms
+
+typeset -gA ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[command]='fg=#98971a'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#689d6a'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#689d6a'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#689d6a'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#cc241d,bold'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#458588'
 
 # zsh syntax highlighting (must be near end)
 if [[ -r /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then

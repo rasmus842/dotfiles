@@ -42,6 +42,7 @@
     - ```echo $options[login]``` -> prints 'on' if login shell (login shell sources ~/.zprofile and then ~/.zshrc)
     - ```echo $ZSH_VERSION```
     - ```echo $0``` -> `zsh`
+    - ```echo $TERM``` -> `xterm-256color`
     - ```echo $PATH``` or ```echo $path```, ```which nvim```, ```which starship```, etc
     - ``````
 8. Some gotchas:
