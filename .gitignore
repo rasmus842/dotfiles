@@ -13,8 +13,6 @@
 
 !tmux/
 !tmux/tmux.conf
-!tmux/themes
-!tmux/themes/**
 
 !alacritty/
 !alacritty/**

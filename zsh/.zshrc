@@ -72,10 +72,6 @@ if [[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# Accept just one word with Ctrl+Right
-bindkey '^[OC' autosuggest-accept-word
-bindkey '^[OF' autosuggest-accept-word  # fallback for some terms
-
 typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[command]='fg=#98971a'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=#689d6a'
