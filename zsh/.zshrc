@@ -39,7 +39,8 @@ autoload -Uz colors && colors
 if command -v dircolors >/dev/null 2>&1; then
   eval "$(dircolors -b)"
 fi
-alias ls='ls -lahgo --color=auto'
+alias ls='ls --color=auto'
+alias la='ls -lahgo --color=auto'
 alias ll='ls -lah --color=auto'
 alias g='git'
 
