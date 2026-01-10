@@ -40,10 +40,11 @@ if command -v dircolors >/dev/null 2>&1; then
   eval "$(dircolors -b)"
 fi
 alias ls='ls --color=auto'
-
+alias la='ls -la --color=auto'
 
 alias vim='nvim'
 alias tmx='tmuxifier'
+
 export EDITOR='nvim'
 
 # --- asdf (zsh version) ---
