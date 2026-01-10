@@ -46,6 +46,10 @@ require("lazy").setup({
 		-- detect tabstop and shiftwidth automatically
 		"tpope/vim-sleuth",
 	},
+	{
+		-- Automatic vim sessions on layout changes and exits
+		"tpope/vim-obsession"
+	},
 
 	-- Highlight todo, notes, etc in comments
 	-- write todo:, note:, fixme:
