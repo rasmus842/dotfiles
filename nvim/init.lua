@@ -26,7 +26,6 @@ require("lazy").setup({
 	require("plugins.code-support.autoformatting"), -- Autoformat
 	require("plugins.code-support.autocompletion"), -- Autocomplete
 	require("plugins.code-support.html-autotags"), -- Autoclose html tags
-	require("plugins.code-support.typescrit-tools"),
 
 	-- Git integration:
 	require("plugins.git.gitsigns"), -- git signs
@@ -49,7 +48,7 @@ require("lazy").setup({
 	},
 	{
 		-- Automatic vim sessions on layout changes and exits
-		"tpope/vim-obsession",
+		"tpope/vim-obsession"
 	},
 
 	-- Highlight todo, notes, etc in comments
