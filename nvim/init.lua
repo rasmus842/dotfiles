@@ -48,7 +48,7 @@ require("lazy").setup({
 	},
 	{
 		-- Automatic vim sessions on layout changes and exits
-		"tpope/vim-obsession"
+		"tpope/vim-obsession",
 	},
 
 	-- Highlight todo, notes, etc in comments
