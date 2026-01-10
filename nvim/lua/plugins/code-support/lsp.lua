@@ -152,7 +152,7 @@ return {
 			elixirls = {
 				-- see https://github.com/elixir-lsp/elixir-ls
 				-- see also github.com/elixir-tools/elixir-tools.nvim
-				cmd = { "/home/rasmus842/.elixir-ls/release/language_server.sh" },
+				cmd = { "~/.elixir-ls/release/language_server.sh" },
 				settings = {
 					autoBuild = false, -- Trigger ElixirLS build when code is saved
 					dialyzerEnabled = true, -- Run ElixirLS's rapid Dialyzer when code is saved
@@ -298,6 +298,11 @@ return {
 					},
 				},
 			},
+			eslint = {
+				settings = {
+					workingDirectory = { mode = "auto" },
+				},
+			},
 			lua_ls = {
 				-- cmd = { ... },
 				-- filetypes = { ... },
@@ -339,6 +344,8 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
+			"prettierd", -- fast prettier daemon
+			"eslint_d", -- eslint
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
