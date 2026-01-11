@@ -21,12 +21,14 @@ require("lazy").setup({
 	require("plugins.core-editor-plugins.telescope"), -- Fuzzy finder
 	require("plugins.core-editor-plugins.bufferline"), -- Display buffers as a list in the top
 
-	-- Code support (LSP, autoformatting, autocompletion)
-	require("plugins.code-support.lsp"), -- LSP for language support
+	-- Code support (autoformatting, autocompletion)
 	require("plugins.code-support.autoformatting"), -- Autoformat
 	require("plugins.code-support.autocompletion"), -- Autocomplete
 	require("plugins.code-support.html-autotags"), -- Autoclose html tags
-	require("plugins.code-support.typescrit-tools"),
+
+	-- LSP
+	require("plugins.lsp.init"),
+	require("plugins.lsp.typescript-tools"),
 
 	-- Git integration:
 	require("plugins.git.gitsigns"), -- git signs
