@@ -68,8 +68,8 @@ vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>") -- enable/disable line w
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Shift visual selected line up
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Shift visual selected line down
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Shift visual selected line up
 
 -- Keep last yanked when pasting
 vim.keymap.set("v", "p", '"_dP')
