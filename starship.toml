@@ -13,8 +13,6 @@ $docker_context[](fg:color_blue bg:color_bg3)\
 $git_branch$git_commit$git_state[](fg:color_bg3 bg:color_bg1)\
 $git_status$git_metrics(fg:color_fg0 bg:color_bg1)[](fg:color_bg1)\
 $fill\
-[](color_bg1)$memory_usage\
-[](fg:color_bg3 bg:color_bg1)$time$battery[](fg:color_bg3)\
 $line_break$character"""
 
 ## GLOBAL OPTIONS
