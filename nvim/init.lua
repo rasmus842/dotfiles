@@ -29,11 +29,16 @@ require("lazy").setup({
 	-- LSP
 	require("plugins.lsp.init"),
 	require("plugins.lsp.typescript-tools"),
+	require("plugins.lsp.nvim-jdtls"),
 
 	-- Git integration:
 	require("plugins.git.gitsigns"), -- git signs
 	require("plugins.git.vim-fugitive"), -- powerful git integration
+	-- require("sindrets/diffview") -- awesome diffing
+	-- require("isak102/telescope-git-file-history") -- files git history, integration with vim-fugitive (fugitive-object)
+	-- also check out fzf-lua for git history and diffing?
 	-- require("tpope/vim-rhubarb") -- github integration for vim-fugitive
+	-- require("NeogitOrg/neogit") -- fugitive alternative
 
 	-- integration with tmux and testing
 	require("plugins.core-editor-plugins.tmux-navigator"),

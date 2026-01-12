@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		{ "williamboman/mason.nvim", config = true },
 		"williamboman/mason-lspconfig.nvim",
+		-- "jay-babu/mason-nvim-dap.nvim", -- TODO: fix this
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} }, -- Useful status updates for LSP
 		"hrsh7th/cmp-nvim-lsp", -- Extra capabilities
@@ -53,6 +54,8 @@ return {
 		require("mason").setup()
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		-- require("mason-nvim-dap").setup({ ensure_installed = { "java-debug-adapter", "java-test" } })
 
 		require("mason-lspconfig").setup({
 			handlers = {
