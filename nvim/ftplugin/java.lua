@@ -1,4 +1,4 @@
-local status, jdtls = pcall("require", "jdtls")
+local status, jdtls = pcall(require, "jdtls")
 if not status then
 	return
 end
@@ -27,9 +27,12 @@ local config = {
 		"--add-opens",
 		"java.base/java.lang=ALL-UNNAMED",
 		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
-		"-jar " .. jdtls_launcher,
-		"-configuration " .. jdtls_config,
-		"-data " .. workspace_dir,
+		"-jar",
+		jdtls_launcher,
+		"-configuration",
+		jdtls_config,
+		"-data",
+		workspace_dir,
 	},
 	root_dir = jdtls.setup.find_root({ ".git", "gradlew", "build.gradle", "mvnw", "pom.xml" }),
 
