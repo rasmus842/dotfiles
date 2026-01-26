@@ -23,11 +23,11 @@ return { -- Autoformat
 			if disable_filetypes[vim.bo[bufnr].filetype] then
 				lsp_format_opt = "never"
 			else
-				lsp_format_opt = "fallback"
+				lsp_format_opt = "never"
 			end
 			return {
 				timeout_ms = 500,
-				lsp_format = "never", -- lsp_format_opt, disable for now
+				lsp_format = lsp_format_opt,
 			}
 		end,
 		formatters_by_ft = {
@@ -40,6 +40,7 @@ return { -- Autoformat
 			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+			css = { "prettierd", "prettier", stop_after_first = true },
 			json = { "prettierd", "prettier", stop_after_first = true },
 			yaml = { "prettierd", "prettier", stop_after_first = true },
 			markdown = { "prettierd", "prettier", stop_after_first = true },

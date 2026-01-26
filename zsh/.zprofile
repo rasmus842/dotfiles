@@ -14,6 +14,8 @@ path+=("$HOME/.local/share/JetBrains/Toolbox/scripts")
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 path+=("$HOME/.rvm/bin")
 
+path+=("$HOME/.opencode/bin")
+
 # Export PATH from `path` array
 export PATH="${(j/:/)path}"
 
