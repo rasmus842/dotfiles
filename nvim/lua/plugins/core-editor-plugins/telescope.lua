@@ -40,13 +40,13 @@ return {
 			-- },
 			pickers = {
 				find_files = {
-					file_ignore_patterns = { "node_modules", ".git", ".venv" },
+					file_ignore_patterns = { "build/", "node_modules", ".git", ".venv" },
 					hidden = true,
 					theme = "ivy",
 				},
 			},
 			live_grep = {
-				file_ignore_patterns = { "node_modules", ".git", ".venv" },
+				file_ignore_patterns = { "build/", "node_modules", ".git", ".venv" },
 				additional_args = function(_)
 					return { "--hidden" }
 				end,
@@ -74,6 +74,17 @@ return {
 		vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 		vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
+		vim.api.nvim_create_user_command("Grep", function(opts)
+			local search_dir = opts.args ~= "" and opts.args or vim.loop.cwd()
+
+			builtin.live_grep({
+				search_dirs = { search_dir },
+			})
+		end, {
+			nargs = "?",
+			complete = "dir",
+		})
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()

@@ -23,6 +23,10 @@
     "branch": "master",
     "commit": "8314f4c9e205e7f30b62147069729f9a1227d8bf"
   },
+  "diffview.nvim": {
+    "branch": "main",
+    "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a"
+  },
   "fidget.nvim": {
     "branch": "main",
     "commit": "64463022a1f2ff1318ab22a2ea4125ed9313a483"
@@ -45,7 +49,7 @@
   },
   "lazy.nvim": {
     "branch": "main",
-    "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97"
+    "commit": "85c7ff3711b730b4030d03144f6db6375044ae82"
   },
   "lualine.nvim": {
     "branch": "master",
@@ -87,10 +91,6 @@
     "branch": "master",
     "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e"
   },
-  "nvim-dap": {
-    "branch": "master",
-    "commit": "cdfd55a133f63228c55f91378f12908cb2a78ded"
-  },
   "nvim-jdtls": {
     "branch": "master",
     "commit": "f73731b543f5971e0da9665eb1d7ceffe1fde71f"
@@ -100,7 +100,7 @@
     "commit": "92ee7d42320edfbb81f3cad851314ab197fa324a"
   },
   "nvim-treesitter": {
-    "branch": "master",
+    "branch": "main",
     "commit": "42fc28ba918343ebfd5565147a42a26580579482"
   },
   "nvim-ts-autotag": {
