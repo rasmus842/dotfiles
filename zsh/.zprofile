@@ -5,9 +5,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 [[ -d "$HOME/bin" ]] && path=("$HOME/bin" $path)
 [[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
 
-# Tmuxifier path
-path=("$XDG_CONFIG_HOME/tmuxifier/bin" $path)
-
 # Added by Toolbox App
 path+=("$HOME/.local/share/JetBrains/Toolbox/scripts")
 
@@ -19,5 +16,3 @@ path+=("$HOME/.opencode/bin")
 # Export PATH from `path` array
 export PATH="${(j/:/)path}"
 
-# Intialize tmuxifier
-eval "$(tmuxifier init -)"
