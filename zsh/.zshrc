@@ -8,7 +8,7 @@ setopt HIST_VERIFY             # show expansion before running it
 setopt SHARE_HISTORY           # share across terminals
 setopt INC_APPEND_HISTORY      # append as commands are run
 
-bindkey '^R' fzf-history-widget
+# bindkey '^R' fzf-history-widget
 
 # --- Useful interactive options ---
 setopt AUTO_CD                 # cd by typing directory name

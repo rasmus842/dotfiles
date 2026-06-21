@@ -67,6 +67,7 @@ require("lazy").setup({
 	require("plugins.misc.todo-comments"),
 
 	require("plugins.misc.tiny-inline-diagnostic"),
+	require("plugins.misc.markdown"),
 })
 
 require("custom.rename")
