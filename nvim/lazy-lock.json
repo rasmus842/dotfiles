@@ -132,8 +132,8 @@
     "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2"
   },
   "telescope.nvim": {
-    "branch": "0.1.x",
-    "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026"
+    "branch": "master",
+    "commit": "9377230aa5305d9e9aca4ed8dadf1070fb4aa9fc"
   },
   "tiny-inline-diagnostic.nvim": {
     "branch": "main",

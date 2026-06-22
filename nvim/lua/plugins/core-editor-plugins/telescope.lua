@@ -1,7 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
-	branch = "0.1.x",
+	branch = "master",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{
@@ -40,16 +40,16 @@ return {
 			-- },
 			pickers = {
 				find_files = {
-					file_ignore_patterns = { "build/", "node_modules", ".git", ".venv" },
+					file_ignore_patterns = { "build/", "node_modules", "%.git/", "%.venv/" },
 					hidden = true,
 					theme = "ivy",
 				},
-			},
-			live_grep = {
-				file_ignore_patterns = { "build/", "node_modules", ".git", ".venv" },
-				additional_args = function(_)
-					return { "--hidden" }
-				end,
+				live_grep = {
+					file_ignore_patterns = { "build/", "node_modules", "%.git/", "%.venv/" },
+					additional_args = function(_)
+						return { "--hidden" }
+					end,
+				},
 			},
 			extensions = {
 				["ui-select"] = {
