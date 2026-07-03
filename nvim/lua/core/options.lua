@@ -65,3 +65,9 @@ vim.opt.inccommand = "split" -- Preview substitutions live, as you type
 
 -- Make comments Red
 vim.api.nvim_set_hl(0, "@comment", { fg = "#dd0000" })
+
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+	command = "if mode() != 'c' | checktime | endif",
+	pattern = "*",
+})
