@@ -13,61 +13,63 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- Core plugins:
-	require("plugins.core-editor-plugins.treesitter"), -- Syntax tree (syntax highlighting)
-	require("plugins.core-editor-plugins.neo-tree"), -- File manager
-	require("plugins.core-editor-plugins.color"), -- Color theme
-	require("plugins.core-editor-plugins.lualine"), -- Status line
-	require("plugins.core-editor-plugins.telescope"), -- Fuzzy finder
-	require("plugins.core-editor-plugins.bufferline"), -- Display buffers as a list in the top
+	spec = {
+		-- Core plugins:
+		require("plugins.core-editor-plugins.treesitter"), -- Syntax tree (syntax highlighting)
+		require("plugins.core-editor-plugins.neo-tree"), -- File manager
+		require("plugins.core-editor-plugins.color"), -- Color theme
+		require("plugins.core-editor-plugins.lualine"), -- Status line
+		require("plugins.core-editor-plugins.telescope"), -- Fuzzy finder
+		require("plugins.core-editor-plugins.bufferline"), -- Display buffers as a list in the top
 
-	-- Code support (autoformatting, autocompletion)
-	require("plugins.code-support.autoformatting"), -- Autoformat
-	require("plugins.code-support.autocompletion"), -- Autocomplete
-	require("plugins.code-support.html-autotags"), -- Autoclose html tags
+		-- Code support (autoformatting, autocompletion)
+		require("plugins.code-support.autoformatting"), -- Autoformat
+		require("plugins.code-support.autocompletion"), -- Autocomplete
+		require("plugins.code-support.html-autotags"), -- Autoclose html tags
 
-	-- LSP
-	require("plugins.lsp.init"),
-	require("plugins.lsp.typescript-tools"),
-	require("plugins.lsp.nvim-jdtls"),
+		-- LSP
+		require("plugins.lsp.init"),
+		require("plugins.lsp.typescript-tools"),
+		require("plugins.lsp.nvim-jdtls"),
 
-	-- Git integration:
-	require("plugins.git.gitsigns"), -- git signs
-	require("plugins.git.vim-fugitive"), -- powerful git integration
-	require("plugins.git.diffview"), -- awesome diffing
-	-- require("isak102/telescope-git-file-history"), -- files git history, integration with vim-fugitive (fugitive-object)
-	-- also check out fzf-lua for git history and diffing?
-	-- require("tpope/vim-rhubarb"), -- github integration for vim-fugitive
-	-- require("NeogitOrg/neogit"), -- fugitive alternative
+		-- Git integration:
+		require("plugins.git.gitsigns"), -- git signs
+		require("plugins.git.vim-fugitive"), -- powerful git integration
+		require("plugins.git.diffview"), -- awesome diffing
+		-- require("isak102/telescope-git-file-history"), -- files git history, integration with vim-fugitive (fugitive-object)
+		-- also check out fzf-lua for git history and diffing?
+		-- require("tpope/vim-rhubarb"), -- github integration for vim-fugitive
+		-- require("NeogitOrg/neogit"), -- fugitive alternative
 
-	-- integration with tmux and testing
-	require("plugins.core-editor-plugins.tmux-navigator"),
-	require("plugins.core-editor-plugins.vim-test"),
+		-- integration with tmux and testing
+		require("plugins.core-editor-plugins.tmux-navigator"),
+		require("plugins.core-editor-plugins.vim-test"),
 
-	-- Miscellanious plugins
-	require("plugins.misc.indent-blankline"), -- Display indentation lines
-	require("plugins.misc.whick-key"), -- Hints keybinds
-	require("plugins.misc.autopairs"), -- Autoclose parens
-	require("plugins.misc.colorizer"), -- highlight colors in code: example #ff0000
-	require("plugins.misc.mini-jump"), -- make f,F,t,T able to jump to other lines
-	{
-		-- detect tabstop and shiftwidth automatically
-		"tpope/vim-sleuth",
+		-- Miscellanious plugins
+		require("plugins.misc.indent-blankline"), -- Display indentation lines
+		require("plugins.misc.whick-key"), -- Hints keybinds
+		require("plugins.misc.autopairs"), -- Autoclose parens
+		require("plugins.misc.colorizer"), -- highlight colors in code: example #ff0000
+		require("plugins.misc.mini-jump"), -- make f,F,t,T able to jump to other lines
+		{
+			-- detect tabstop and shiftwidth automatically
+			"tpope/vim-sleuth",
+		},
+		{
+			-- Automatic vim sessions on layout changes and exits
+			"tpope/vim-obsession",
+		},
+
+		-- Highlight todo, notes, etc in comments
+		-- write todo:, note:, fixme:
+		-- TODO: example
+		-- NOTE: hello
+		-- FIXME: needs fixing
+		require("plugins.misc.todo-comments"),
+
+		require("plugins.misc.tiny-inline-diagnostic"),
+		require("plugins.misc.markdown"),
 	},
-	{
-		-- Automatic vim sessions on layout changes and exits
-		"tpope/vim-obsession",
-	},
-
-	-- Highlight todo, notes, etc in comments
-	-- write todo:, note:, fixme:
-	-- TODO: example
-	-- NOTE: hello
-	-- FIXME: needs fixing
-	require("plugins.misc.todo-comments"),
-
-	require("plugins.misc.tiny-inline-diagnostic"),
-	require("plugins.misc.markdown"),
 })
 
 require("custom.rename")
