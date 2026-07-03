@@ -34,7 +34,7 @@ vim.keymap.set("n", "<Right>", ":vertical resize -2<CR>")
 -- vim.keymap.set("n", "<S-Tab>", ":lua NavigateTabBuffers('p')<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>x", "<cmd> write | bdelete <CR>") -- save and close buffer
+vim.keymap.set("n", "<leader>x", "<cmd> write | Bdelete <CR>") -- save and close buffer
 vim.keymap.set("n", "<leader>b", ":<cmd> enew <CR>") -- new buffer
 
 --Window management
