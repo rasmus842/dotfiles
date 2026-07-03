@@ -71,5 +71,6 @@ require("lazy").setup({
 })
 
 require("custom.rename")
+require("custom.copy-file-path")
 
 vim.api.nvim_set_hl(0, "@comment", { fg = "#db4b4b" })
