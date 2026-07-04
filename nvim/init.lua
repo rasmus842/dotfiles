@@ -1,6 +1,7 @@
 require("core.options")
 require("core.keymaps")
 require("core.wl-clipboard")
+require("core.folds")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -31,6 +32,9 @@ require("lazy").setup({
 		require("plugins.lsp.init"),
 		require("plugins.lsp.typescript-tools"),
 		require("plugins.lsp.nvim-jdtls"),
+
+		-- Code folding
+		require("plugins.misc..ufo"),
 
 		-- Git integration:
 		require("plugins.git.gitsigns"), -- git signs
