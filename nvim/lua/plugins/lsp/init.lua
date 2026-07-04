@@ -29,7 +29,8 @@ return {
 			elixirls = require("plugins.lsp.servers.elixirls"),
 			emmet_language_server = require("plugins.lsp.servers.emmet"),
 			tailwindcss = require("plugins.lsp.servers.tailwindcss"),
-			eslint = require("plugins.lsp.servers.eslint"),
+			-- eslint disabled, it does not work well with pnpm projects
+			-- eslint = require("plugins.lsp.servers.eslint"),
 		}
 
 		-- you can add other tools here that you want mason to install
@@ -57,17 +58,10 @@ return {
 
 		-- require("mason-nvim-dap").setup({ ensure_installed = { "java-debug-adapter", "java-test" } })
 
-		require("mason-lspconfig").setup({
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					-- this handles overriding only values explicitly passed
-					-- by the server configuration above. useful when disabling
-					-- certain features of an lsp (for example, turning off formatting for ts_ls)
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
-		})
+		vim.lsp.config("*", { capabilities = capabilities })
+		for server_name, server in pairs(servers) do
+			vim.lsp.config(server_name, server)
+		end
+		require("mason-lspconfig").setup()
 	end,
 }
