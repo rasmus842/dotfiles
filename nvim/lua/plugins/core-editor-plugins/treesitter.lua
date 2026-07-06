@@ -10,6 +10,9 @@ return {
 		require("nvim-treesitter").setup()
 
 		local ensure_installed = {
+			"go",
+			"gomod",
+			"gosum",
 			"c",
 			"python",
 			"java",

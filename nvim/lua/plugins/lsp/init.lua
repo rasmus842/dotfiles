@@ -29,6 +29,7 @@ return {
 			elixirls = require("plugins.lsp.servers.elixirls"),
 			emmet_language_server = require("plugins.lsp.servers.emmet"),
 			tailwindcss = require("plugins.lsp.servers.tailwindcss"),
+			gopls = require("plugins.lsp.servers.gopls"),
 			-- eslint disabled, it does not work well with pnpm projects
 			-- eslint = require("plugins.lsp.servers.eslint"),
 		}
