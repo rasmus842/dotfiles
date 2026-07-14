@@ -34,7 +34,7 @@ require("lazy").setup({
 		require("plugins.lsp.nvim-jdtls"),
 
 		-- Code folding
-		require("plugins.misc..ufo"),
+		require("plugins.misc.ufo"),
 
 		-- Git integration:
 		require("plugins.git.gitsigns"), -- git signs
