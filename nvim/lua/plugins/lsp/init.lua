@@ -30,13 +30,16 @@ return {
 			emmet_language_server = require("plugins.lsp.servers.emmet"),
 			tailwindcss = require("plugins.lsp.servers.tailwindcss"),
 			gopls = require("plugins.lsp.servers.gopls"),
+			ruby_lsp = require("plugins.lsp.servers.ruby_lsp"),
 			-- eslint disabled, it does not work well with pnpm projects
 			-- eslint = require("plugins.lsp.servers.eslint"),
 		}
 
-		-- you can add other tools here that you want mason to install
-		-- for you, so that they are available from within neovim.
-		local ensure_installed = vim.tbl_keys(servers or {})
+		-- Extend table so that Mason can install other tools
+		-- Ruby lsp should not be installed using Mason
+		local ensure_installed = vim.tbl_filter(function(name)
+			return name ~= "ruby_lsp"
+		end, vim.tbl_keys(servers or {}))
 		vim.list_extend(ensure_installed, {
 			"stylua", -- used to format lua code
 			"prettierd", -- fast prettier daemon
@@ -64,5 +67,7 @@ return {
 			vim.lsp.config(server_name, server)
 		end
 		require("mason-lspconfig").setup()
+
+		vim.lsp.enable("ruby_lsp")
 	end,
 }

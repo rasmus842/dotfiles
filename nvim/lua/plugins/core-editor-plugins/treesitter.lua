@@ -13,6 +13,7 @@ return {
 			"go",
 			"gomod",
 			"gosum",
+			"ruby",
 			"c",
 			"python",
 			"java",
