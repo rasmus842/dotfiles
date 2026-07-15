@@ -13,5 +13,9 @@ return {
 
 		-- configure vim test to pipe tests into tmux pane through vimux
 		vim.cmd("let test#strategy = 'vimux'")
+
+		-- custom runner for Nx monorepos with a mocha-wrapping test executor
+		-- (see ~/.config/nvim/autoload/test/javascript/nxmocha.vim)
+		vim.g["test#custom_runners"] = { JavaScript = { "Nxmocha" } }
 	end,
 }
