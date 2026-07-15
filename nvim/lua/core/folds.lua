@@ -12,6 +12,8 @@ vim.opt.fillchars = {
 	foldsep = " ",
 }
 
+-- Folding imports (does not seem to work):
+--[[
 vim.api.nvim_create_autocmd("LspNotify", {
 	callback = function(ev)
 		if ev.data.method == "textDocument/didOpen" then
@@ -19,6 +21,7 @@ vim.api.nvim_create_autocmd("LspNotify", {
 		end
 	end,
 })
+--]]
 
 -- No plugin folds:
 --[[
