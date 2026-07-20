@@ -42,6 +42,12 @@ return {
 			},
 		})
 
+		-- Directory of the hovered node (its parent when a file is hovered).
+		local function node_dir(state)
+			local node = state.tree:get_node()
+			return node.type == "directory" and node.path or vim.fn.fnamemodify(node.path, ":h")
+		end
+
 		require("neo-tree").setup({
 			close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 			popup_border_style = "rounded",
@@ -250,6 +256,12 @@ return {
 						["<bs>"] = "navigate_up",
 						["."] = "set_root",
 						["H"] = "toggle_hidden",
+						["<leader>ff"] = function(state)
+							require("telescope.builtin").find_files({ cwd = node_dir(state) })
+						end,
+						["<leader>fg"] = function(state)
+							require("telescope.builtin").live_grep({ search_dirs = { node_dir(state) } })
+						end,
 						["/"] = "fuzzy_finder",
 						["D"] = "fuzzy_finder_directory",
 						["#"] = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm

@@ -75,6 +75,28 @@ return {
 		vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
+		-- Prompt for a directory, then run the given picker scoped to it.
+		local function search_in_dir(picker, opts_fn)
+			vim.ui.input({ prompt = "Dir: ", completion = "dir", default = vim.loop.cwd() }, function(dir)
+				if not dir or dir == "" then
+					return
+				end
+				picker(opts_fn(vim.fn.expand(dir)))
+			end)
+		end
+
+		vim.keymap.set("n", "<leader>Ff", function()
+			search_in_dir(builtin.find_files, function(dir)
+				return { cwd = dir }
+			end)
+		end, { desc = "[F]ind [F]iles in directory" })
+
+		vim.keymap.set("n", "<leader>Fg", function()
+			search_in_dir(builtin.live_grep, function(dir)
+				return { search_dirs = { dir } }
+			end)
+		end, { desc = "[F]ind by [G]rep in directory" })
+
 		vim.api.nvim_create_user_command("Grep", function(opts)
 			local search_dir = opts.args ~= "" and opts.args or vim.loop.cwd()
 
