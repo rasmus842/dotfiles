@@ -1,4 +1,4 @@
-vim.g.have_nerd_font = false -- Set to true if NerdFont installed
+vim.g.have_nerd_font = true -- Set to true if NerdFont installed
 
 -- Line numbers
 vim.opt.number = true -- Mark line numbers
