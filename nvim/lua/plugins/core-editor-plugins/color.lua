@@ -118,4 +118,4 @@ local gruber_darker2 = {
 -- change the command in the config to whatever the name of that colorscheme is.
 --
 -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-return gruvbox
+return tokyonight
