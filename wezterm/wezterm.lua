@@ -24,12 +24,14 @@ config.colors = {
 config.send_composed_key_when_left_alt_is_pressed = false
 config.send_composed_key_when_right_alt_is_pressed = true
 
+-- Go through a login shell so PATH comes from the zsh profile: WezTerm
+-- launched from Finder/Dock inherits launchd's minimal PATH, which does not
+-- include Homebrew, so spawning tmux directly fails to resolve the binary.
 config.default_prog = {
-	"tmux",
-	"new-session",
-	"-A",
-	"-s",
-	"main",
+	"/bin/zsh",
+	"-l",
+	"-c",
+	"exec tmux new-session -A -s main",
 }
 
 return config
