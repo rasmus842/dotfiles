@@ -9,6 +9,7 @@ return {
 	config = function()
 		require("tokyonight").setup({
 			style = "night", -- night, storm, moon
+			transparent = true,
 		})
 		vim.cmd.colorscheme("tokyonight-night")
 	end,

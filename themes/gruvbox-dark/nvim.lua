@@ -28,7 +28,7 @@ return {
 			invert_tabline = false,
 			inverse = true, -- invert background for search, diffs, statuslines and errors
 			dim_inactive = false,
-			transparent_mode = false,
+			transparent_mode = true,
 			palette_overrides = {},
 			overrides = {
 				String = { fg = p.bright_yellow, italic = is_strings_italic },

@@ -66,7 +66,6 @@ autoload -Uz colors && colors
 case "$OSTYPE" in
   darwin*)
     export CLICOLOR=1
-    export LSCOLORS='ExGxFxdaCxDaDahbadeche' # gruvbox-like
     alias la='ls -lahGo'
     alias ll='ls -lahG'
     ;;

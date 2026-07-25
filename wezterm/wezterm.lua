@@ -1,6 +1,22 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+config.keys = {}
+for _, module in ipairs({ "background", "theme" }) do
+	local m = require(module)
+	m.apply_to_config(config)
+	for _, k in ipairs(m.keys or {}) do
+		table.insert(config.keys, k)
+	end
+end
+
+local keys = {
+	{ key = "f", mods = "SUPER", action = wezterm.action.Search({ CaseInSensitiveString = "" }) },
+}
+for _, k in ipairs(keys) do
+	table.insert(config.keys, k)
+end
+
 config.term = "xterm-256color"
 config.enable_tab_bar = false
 config.scrollback_lines = 10000
@@ -8,25 +24,6 @@ config.scrollback_lines = 10000
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 19
 config.line_height = 1.1
-
--- Colors come from the active theme (see dotfiles/themes/), so `theme <name>`
--- recolors this alongside tmux, zsh, starship and neovim. WezTerm watches only
--- the config file it loaded and not the files that file pulls in, so `theme`
--- bumps this file's mtime to force the reload; CTRL+SHIFT+R if it ever misses.
-local config_home = os.getenv("XDG_CONFIG_HOME") or (os.getenv("HOME") .. "/.config")
-
-local theme_file = config_home .. "/themes/current/wezterm.lua"
-
-local ok, theme = pcall(dofile, theme_file)
-if ok then
-	for key, value in pairs(theme) do
-		config[key] = value
-	end
-else
-	wezterm.log_error("Could not load theme " .. theme_file .. ": " .. tostring(theme))
-end
-
--- config.window_decorations = "RESIZE"
 
 -- On macOS: left Option behaves as terminal Alt
 -- right option remains available for composed characters.

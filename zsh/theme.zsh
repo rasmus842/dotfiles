@@ -67,9 +67,6 @@ theme() {
   # WezTerm watches only its main config file, not the files that config
   # dofile's — so bump its mtime to force a re-read. CTRL+SHIFT+R if it misses.
   [[ -e "$HOME/.wezterm.lua" ]] && touch "$HOME/.wezterm.lua"
-  [[ -e "$HOME/.wezterm.lua" ]] && touch "$HOME/.wezterm.lua"
-
-  print -r -- "theme: $name (restart nvim to apply there)"
 }
 
 _theme() {
