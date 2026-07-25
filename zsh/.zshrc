@@ -1,21 +1,37 @@
+# Interactive shells. PATH and login-time env live in .zprofile.
+typeset -U path PATH fpath FPATH   # idempotent: keeps nested shells from duplicating PATH entries
+
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000
-SAVEHIST=20000
+HISTSIZE=100000
+SAVEHIST=200000
 
-setopt HIST_IGNORE_DUPS        # don't record dupes
-setopt HIST_IGNORE_SPACE       # ignore commands starting with space
+setopt SHARE_HISTORY           # share across terminals (implies INC_APPEND_HISTORY)
 setopt HIST_VERIFY             # show expansion before running it
-setopt SHARE_HISTORY           # share across terminals
-setopt INC_APPEND_HISTORY      # append as commands are run
-
-# bindkey '^R' fzf-history-widget
 
 # --- Useful interactive options ---
 setopt AUTO_CD                 # cd by typing directory name
-setopt CORRECT                 # command correction (optional; comment if annoying)
 setopt INTERACTIVE_COMMENTS    # allow comments in interactive shell
 
+# --- Keybinds: emacs, as used by most other terminals ---
+bindkey -e
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^F' forward-word
+bindkey '^B' backward-word
+bindkey '^W' backward-kill-word
+bindkey '^O' kill-line
+bindkey '^U' backward-kill-line
+
+# Treat path segments as separate words
+autoload -Uz select-word-style
+select-word-style bash
+
 # --- Completion ---
+# brew's zsh-completions must join fpath before compinit
+if [[ -n "$HOMEBREW_PREFIX" && -d "$HOMEBREW_PREFIX/share/zsh-completions" ]]; then
+  fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
+fi
+
 autoload -Uz compinit
 # If you ever get "insecure directories" warnings, run:
 #   compaudit | xargs chmod g-w,o-w
@@ -26,55 +42,52 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 zmodload zsh/complist
-bindkey -M menuselect '^I'  forward-char           # Tab
+bindkey -M menuselect '^I'  forward-char            # Tab
 bindkey -M menuselect '^[[Z' reverse-menu-complete  # Shift+Tab
 
-# Alacritty / tmux: nice terminal title
-case "$TERM" in
-  xterm*|rxvt*|alacritty*)
-    precmd () { print -Pn "\e]0;%n@%m: %~\a"}
-esac
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+  export FZF_DEFAULT_COMMAND='rg --files'
+  # export FZF_DEFAULT_OPTS='...'
+  # check fzf --man or junegunn.github.io/fzf
+fi
+
+# --- Editor / pager ---
+alias vim='nvim'
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='bat' # maybe delta instead?
+export MANPAGER='nvim +Man!'
+# export BAT_THEME='Catppuccin Mocha'
+# export GIT_PAGER='delta'
 
 # --- Colors / ls ---
 autoload -Uz colors && colors
-# Debian usually has dircolors available; this sets LS_COLORS for GNU ls
-if command -v dircolors >/dev/null 2>&1; then
-  eval "$(dircolors -b)"
-fi
-alias ls='ls --color=auto'
-alias la='ls -lahgo --color=auto'
-alias ll='ls -lah --color=auto'
-alias g='git'
 
-alias vim='nvim'
-export EDITOR='nvim'
+case "$OSTYPE" in
+  darwin*)
+    export CLICOLOR=1
+    export LSCOLORS='ExGxFxdaCxDaDahbadeche' # gruvbox-like
+    alias la='ls -lahGo'
+    alias ll='ls -lahG'
+    ;;
+  linux*)
+    # dircolors sets LS_COLORS for GNU ls
+    command -v dircolors >/dev/null 2>&1 && eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias la='ls -lahgo --color=auto'
+    alias ll='ls -lah --color=auto'
+    ;;
+esac
 
-# --- asdf (zsh version) ---
-# Prefer asdf's zsh completion if present
-if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
-  . "$HOME/.asdf/asdf.sh"
-fi
-# Newer asdf has zsh completions here:
-if [[ -s "$HOME/.asdf/completions/asdf.zsh" ]]; then
-  fpath=("$HOME/.asdf/completions" $fpath)
-fi
+# --- Terminal title ---
+case "$TERM" in
+  xterm*|rxvt*|alacritty*|wezterm*|tmux*|screen*)
+    precmd() { print -Pn "\e]0;%n@%m: %~\a" }
+    ;;
+esac
 
-# --- SDKMAN (works fine in zsh) ---
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-# --- NVM (zsh) ---
-export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-
-# --- RVM (if you actually use it interactively) ---
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# zsh autosuggestions
-if [[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
+# --- Syntax highlighting (must be near end) ---
 typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[command]='fg=#98971a'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=#689d6a'
@@ -83,12 +96,16 @@ ZSH_HIGHLIGHT_STYLES[function]='fg=#689d6a'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#cc241d,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=#458588'
 
-# zsh syntax highlighting (must be near end)
-if [[ -r /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+for zsh_hl in "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" \
+              /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+  if [[ -r "$zsh_hl" ]]; then
+    source "$zsh_hl"
+    break
+  fi
+done
+unset zsh_hl
 
-# --- Prompt: starship (zsh) ---
-# Put this near the end so it sees env vars/paths
-eval "$(starship init zsh)"
-
+# --- Prompt: starship ---
+# Disabled until starship is installed again; needs to stay near the end so it
+# sees the final env/paths.
+# eval "$(starship init zsh)"

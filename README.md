@@ -26,15 +26,43 @@ export PATH="$XDG_CONFIG_HOME/tmuxifier"`
 
 ## Z-shell (zsh):
 
-1. Install: `sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting`
+1. Install:
+   - Debian: `sudo apt install zsh zsh-syntax-highlighting`
+   - macOS: `brew install zsh zsh-syntax-highlighting zsh-completions`
 2. Verify:
    - `which zsh`
    - `zsh --version` should output 5.9 or higher
 3. Set as default shell: `chsh -s $(which zsh)`
-4. Make zsh reference `~/.config/zsh` -> `echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv`
+4. Wire up the configs. `~/.zshrc` and `~/.zprofile` stay in `$HOME` as thin,
+   machine-local shims that source the portable config from this repo. Keep
+   machine-specific things (tokens, work paths) in the shim, not in the repo.
+
+   `~/.zprofile`:
+
+   ```zsh
+   source "$HOME/dotfiles/zsh/.zprofile"
+   # machine-specific PATH below, e.g.
+   # [[ -d "$HOME/work/bin" ]] && path=("$HOME/work/bin" $path)
+   ```
+
+   `~/.zshrc`:
+
+   ```zsh
+   source "$HOME/dotfiles/zsh/.zshrc"
+   # machine-specific env below
+   ```
+
+   Use the literal `$HOME/dotfiles/...` path, not `$dotfiles` — `~/.zshrc` runs
+   in non-login shells where `.zprofile` never ran. Put any `bindkey` or ZLE
+   widget additions *before* the `source` line so zsh-syntax-highlighting still
+   initializes last.
+
+   Deliberately **not** using `ZDOTDIR`: it would relocate `.zcompdump`,
+   `.zcompcache` and Terminal.app's `.zsh_sessions` into this repo, and would
+   silently neuter installers that append to `~/.zshrc`.
 5. Load changes, either restart or `exec zsh -l`
 6. Make checks:
-   - is starship prompt working as expected? `which starship`
+   - starship: currently commented out in `zsh/.zshrc`; re-enable once `which starship` resolves
    - `echo $options[login]` -> prints 'on' if login shell (login shell sources ~/.zprofile and then ~/.zshrc)
    - `echo $ZSH_VERSION`
    - `echo $0` -> `zsh`
@@ -95,7 +123,8 @@ see https://github.com/neovim/neovim and https://github.com/neovim/neovim/blob/m
 
 ## After:
 
-1. clone repo to import configs to `~/.config` (starship, zsh, alacritty, tmux configs)
+1. clone repo to `~/dotfiles`, then symlink into `~/.config` (starship, nvim, tmux, alacritty).
+   zsh is the exception: it is sourced from the repo by the `~/.zshrc` / `~/.zprofile` shims above.
 2. Run neovim to install plugins via Lazy
    - also download and setup required lsp-s
 3. run tmux and press <prefix>-I to install tmux plugins
