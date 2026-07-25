@@ -9,7 +9,8 @@
 # Starship is the exception: it has no include mechanism, so all palettes live
 # in starship.toml and only the `palette` key gets rewritten.
 
-THEMES_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/themes"
+CONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
+THEMES_DIR="$CONF_DIR/themes"
 
 theme() {
   local dir="$THEMES_DIR"
@@ -43,7 +44,7 @@ theme() {
   # Starship reads its config afresh on every prompt, so rewriting the palette
   # key is enough — no reload. Resolve the symlink first: an in-place sed would
   # replace ~/.config/starship.toml with a regular file and break the link.
-  local starship_cfg="${STARSHIP_CONFIG:-${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml}"
+  local starship_cfg="${STARSHIP_CONFIG:-${CONF_DIR}/starship.toml}"
   starship_cfg="${starship_cfg:A}"
   if [[ -w "$starship_cfg" ]]; then
     if grep -q "^\[palettes\.${name}\]" "$starship_cfg"; then
@@ -66,7 +67,7 @@ theme() {
 
   # WezTerm watches only its main config file, not the files that config
   # dofile's — so bump its mtime to force a re-read. CTRL+SHIFT+R if it misses.
-  [[ -e "$HOME/.wezterm.lua" ]] && touch "$HOME/.wezterm.lua"
+  [[ -e "$CONF_DIR/wezterm/wezterm.lua" ]] && touch "$CONF_DIR/wezterm/wezterm.lua"
 }
 
 _theme() {

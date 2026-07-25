@@ -3,10 +3,7 @@ local wezterm = require("wezterm")
 local M = {}
 
 function M.apply_to_config(config)
-	-- Colors come from the active theme (see dotfiles/themes/), so `theme <name>`
-	-- recolors this alongside tmux, zsh, starship and neovim. WezTerm watches only
-	-- the config file it loaded and not the files that file pulls in, so `theme`
-	-- bumps this file's mtime to force the reload; CTRL+SHIFT+R if it ever misses.
+	-- see dotfiles/themes
 	local config_home = os.getenv("XDG_CONFIG_HOME") or (os.getenv("HOME") .. "/.config")
 
 	local theme_file = config_home .. "/themes/current/wezterm.lua"
