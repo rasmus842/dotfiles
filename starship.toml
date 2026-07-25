@@ -17,6 +17,7 @@ $line_break$character"""
 
 ## GLOBAL OPTIONS
 command_timeout = 200
+add_newline = false
 
 
 ## COLOR THEME
