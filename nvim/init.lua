@@ -46,7 +46,7 @@ require("lazy").setup({
 		-- require("NeogitOrg/neogit"), -- fugitive alternative
 
 		-- integration with tmux and testing
-		require("plugins.core-editor-plugins.tmux-navigator"),
+		require("plugins.core-editor-plugins.smart-splits"),
 		require("plugins.core-editor-plugins.vim-test"),
 
 		-- Miscellanious plugins

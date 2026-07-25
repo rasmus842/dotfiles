@@ -44,6 +44,7 @@ vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split equal size" }) 
 vim.keymap.set("n", "<leader>xs", ":close<CR>", { desc = "Close split" }) -- close split
 
 -- Move between windows
+-- fallback only; smart-splits.nvim overrides these to also cross into tmux panes
 vim.keymap.set("n", "<C-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<C-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>")
