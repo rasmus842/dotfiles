@@ -19,14 +19,39 @@ $line_break$character"""
 command_timeout = 200
 
 
-palette = 'gruvbox_dark'
 ## COLOR THEME
+#
+# Starship has no include mechanism, so unlike every other tool in the stack it
+# cannot read colors out of themes/current — all palettes live here instead and
+# `theme <name>` rewrites the `palette` line below. Palette names must therefore
+# match the directory names in dotfiles/themes/.
+#
+# Every palette defines the same slots. color_bg0 is the terminal background and
+# is the foreground used on the light accent segments (orange/yellow/aqua/blue);
+# color_fg0 is for text on the dark bg1/bg3 surfaces. Keeping both is what lets
+# a light-accent theme like tokyonight use this format at all.
 
-[palettes.gruvbox_dark]
+palette = 'tokyonight-night'
+
+[palettes.tokyonight-night]
+color_bg0 = '#1a1b26'
+color_fg0 = '#c0caf5'
+color_bg1 = '#292e42'
+color_bg3 = '#3b4261'
+color_blue = '#7aa2f7'
+color_aqua = '#7dcfff'
+color_green = '#9ece6a'
+color_orange = '#ff9e64'
+color_purple = '#bb9af7'
+color_red = '#f7768e'
+color_yellow = '#e0af68'
+
+[palettes.gruvbox-dark]
+color_bg0 = '#282828'
 color_fg0 = '#fbf1c7'
 color_bg1 = '#3c3836'
 color_bg3 = '#665c54'
-color_blue = '#458588'
+color_blue = '#83a598' # bright_blue: neutral #458588 is too dark to read on
 color_aqua = '#689d6a'
 color_green = '#98971a'
 color_orange = '#d65d0e'
@@ -34,24 +59,37 @@ color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
 
+[palettes.catppuccin-mocha]
+color_bg0 = '#1e1e2e'
+color_fg0 = '#cdd6f4'
+color_bg1 = '#313244'
+color_bg3 = '#45475a'
+color_blue = '#89b4fa'
+color_aqua = '#94e2d5'
+color_green = '#a6e3a1'
+color_orange = '#fab387'
+color_purple = '#cba6f7'
+color_red = '#f38ba8'
+color_yellow = '#f9e2af'
+
 
 ## OS, user, and host
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_orange fg:color_bg0"
 
 [username]
 disabled = true
 show_always = true
-style_user = "fg:color_fg0 bg:color_orange"
-style_root = "fg:color_fg0 bg:color_orange"
+style_user = "fg:color_bg0 bg:color_orange"
+style_root = "fg:color_bg0 bg:color_orange"
 format = '[$user ]($style)'
 
 [hostname]
 disabled = false
 ssh_symbol = " "
 ssh_only = true
-style = "fg:color_fg0 bg:color_orange"
+style = "fg:color_bg0 bg:color_orange"
 format = '[$ssh_symbol$hostname ]($style)'
 
 
@@ -60,7 +98,7 @@ format = '[$ssh_symbol$hostname ]($style)'
 home_symbol = "~"
 truncation_length = 5
 truncation_symbol = ""
-style = "fg:color_fg0 bg:color_yellow"
+style = "fg:color_bg0 bg:color_yellow"
 read_only = " 󰌾"
 read_only_style = "fg:color_red bg:color_yellow"
 format = "[ $path]($style)[$read_only ]($read_only_style)"
@@ -157,105 +195,105 @@ vimcmd_visual_symbol = '[❰](bold fg:color_yellow)'
 [nodejs]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [bun]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [deno]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 
 [java]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [kotlin]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [scala]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [gradle]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [lua]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [python]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [php]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [ruby]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [elixir]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 
 [c]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [cpp]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [cmake]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [xmake]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 
 [rust]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [zig]
 symbol = " "
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 [haskell]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol ](fg:color_bg0 bg:color_aqua)]($style)'
 
 
 [os.symbols]
@@ -313,5 +351,5 @@ Zorin = " "
 [docker_context]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $context) ](fg:color_fg0 bg:color_blue)]($style)'
+format = '[[ $symbol( $context) ](fg:color_bg0 bg:color_blue)]($style)'
 

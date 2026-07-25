@@ -48,7 +48,7 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete  # Shift+Tab
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
   export FZF_DEFAULT_COMMAND='rg --files'
-  # export FZF_DEFAULT_OPTS='...'
+  # export FZF_EXTRA_OPTS='--height 40% --layout=reverse'
   # check fzf --man or junegunn.github.io/fzf
 fi
 
@@ -58,7 +58,6 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='bat' # maybe delta instead?
 export MANPAGER='nvim +Man!'
-# export BAT_THEME='Catppuccin Mocha'
 # export GIT_PAGER='delta'
 
 # --- Colors / ls ---
@@ -87,15 +86,12 @@ case "$TERM" in
     ;;
 esac
 
-# --- Syntax highlighting (must be near end) ---
-typeset -gA ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[command]='fg=#98971a'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=#689d6a'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=#689d6a'
-ZSH_HIGHLIGHT_STYLES[function]='fg=#689d6a'
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#cc241d,bold'
-ZSH_HIGHLIGHT_STYLES[path]='fg=#458588'
+# --- Color theme ---
+# Shell colors (syntax highlighting, fzf, bat) for the active theme.
+# Must come before zsh-syntax-highlighting is sourced, as the styles did.
+source "${XDG_CONFIG_HOME:-$HOME/.config}/themes/current/zsh.zsh"
 
+# --- Syntax highlighting (must be near end) ---
 for zsh_hl in "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" \
               /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
   if [[ -r "$zsh_hl" ]]; then

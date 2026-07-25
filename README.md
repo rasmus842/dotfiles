@@ -54,12 +54,13 @@ export PATH="$XDG_CONFIG_HOME/tmuxifier"`
 
    Use the literal `$HOME/dotfiles/...` path, not `$dotfiles` — `~/.zshrc` runs
    in non-login shells where `.zprofile` never ran. Put any `bindkey` or ZLE
-   widget additions *before* the `source` line so zsh-syntax-highlighting still
+   widget additions _before_ the `source` line so zsh-syntax-highlighting still
    initializes last.
 
    Deliberately **not** using `ZDOTDIR`: it would relocate `.zcompdump`,
    `.zcompcache` and Terminal.app's `.zsh_sessions` into this repo, and would
    silently neuter installers that append to `~/.zshrc`.
+
 5. Load changes, either restart or `exec zsh -l`
 6. Make checks:
    - starship: currently commented out in `zsh/.zshrc`; re-enable once `which starship` resolves
@@ -121,10 +122,37 @@ see https://github.com/neovim/neovim and https://github.com/neovim/neovim/blob/m
 3. For java development:
    - Inside neovim install jdtls using Mason: `:MasonInstall jdtls`
 
+## Color themes:
+
+One command recolors the whole stack:
+
+```
+theme                    # show the active theme and what else is available
+theme catppuccin-mocha   # switch
+```
+
+Each theme is a directory of fragments under `themes/`, one file per tool,
+written in that tool's own config language — no templating, no build step:
+
+```
+themes/
+  current -> tokyonight-night   # git-tracked symlink: the active theme
+  tokyonight-night/
+    tmux.conf      wezterm.lua
+    zsh.zsh        nvim.lua
+  gruvbox-dark/
+  catppuccin-mocha/
+```
+
 ## After:
 
-1. clone repo to `~/dotfiles`, then symlink into `~/.config` (starship, nvim, tmux, alacritty).
+1. clone repo to `~/dotfiles`, then symlink into `~/.config` (starship, nvim, tmux, alacritty, themes).
    zsh is the exception: it is sourced from the repo by the `~/.zshrc` / `~/.zprofile` shims above.
+
+   ```
+   ln -s ~/dotfiles/themes ~/.config/themes
+   ```
+
 2. Run neovim to install plugins via Lazy
    - also download and setup required lsp-s
 3. run tmux and press <prefix>-I to install tmux plugins
