@@ -19,10 +19,13 @@ end
 
 config.term = "xterm-256color"
 config.enable_tab_bar = false
+config.window_decorations = "RESIZE"
+config.initial_rows = 48
+config.initial_cols = 200
 config.scrollback_lines = 10000
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font_size = 19
+config.font_size = 13
 config.line_height = 1.1
 
 -- On macOS: left Option behaves as terminal Alt

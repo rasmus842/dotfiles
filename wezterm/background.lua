@@ -18,7 +18,6 @@ function M.apply_to_config(config)
 	end)
 
 	wezterm.on("toggle-window-decoration", function(window, pane)
-		-- config.window_decorations = "RESIZE"
 		local overrides = window:get_config_overrides() or {}
 		local current = overrides.window_decorations or config.window_decorations
 		if current ~= "RESIZE" then
