@@ -1,22 +1,2 @@
-# ignore all by default
-*
-!.gitignore
-!README.md
-
-!starship.toml
-
-!zsh/
-!zsh/zprofile
-!zsh/zlogin
-!zsh/zlogout
-!zsh/zshrc
-
-!tmux/
-!tmux/tmux.conf
-
-!alacritty/
-!alacritty/**
-
-!nvim/
-!nvim/**
-
+# vim sessions with obsess
+Session.vim
