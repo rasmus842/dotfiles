@@ -105,7 +105,4 @@ for zsh_hl in "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlig
 done
 unset zsh_hl
 
-# --- Prompt: starship ---
-# Disabled until starship is installed again; needs to stay near the end so it
-# sees the final env/paths.
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"

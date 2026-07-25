@@ -41,7 +41,7 @@ disabled = false
 style = "bg:color_orange fg:color_fg0"
 
 [username]
-disabled = false
+disabled = true
 show_always = true
 style_user = "fg:color_fg0 bg:color_orange"
 style_root = "fg:color_fg0 bg:color_orange"
