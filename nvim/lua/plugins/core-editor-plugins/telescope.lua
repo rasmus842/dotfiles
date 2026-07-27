@@ -50,6 +50,10 @@ return {
 						return { "--hidden" }
 					end,
 				},
+				buffers = {
+					sort_mru = true,
+					ignore_current_buffer = false,
+				},
 			},
 			extensions = {
 				["ui-select"] = {
