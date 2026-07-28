@@ -26,7 +26,7 @@ config.scrollback_lines = 10000
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 13
-config.line_height = 1.1
+config.line_height = 1.05
 
 -- On macOS: left Option behaves as terminal Alt
 -- right option remains available for composed characters.
