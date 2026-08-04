@@ -32,7 +32,7 @@ add_newline = false
 # color_fg0 is for text on the dark bg1/bg3 surfaces. Keeping both is what lets
 # a light-accent theme like tokyonight use this format at all.
 
-palette = 'tokyonight-night'
+palette = 'catppuccin-mocha'
 
 [palettes.tokyonight-night]
 color_bg0 = '#1a1b26'
