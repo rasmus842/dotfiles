@@ -39,6 +39,10 @@ config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 13
 config.line_height = 1.05
 
+-- Reflow the grid on SUPER+-/= instead of resizing the OS window, so tmux
+-- panes gain/lose cells and the window stays where it is.
+config.adjust_window_size_when_changing_font_size = false
+
 -- On macOS: left Option behaves as terminal Alt
 -- right option remains available for composed characters.
 -- (these are already WezTerm's macOS defaults; set explicitly because
