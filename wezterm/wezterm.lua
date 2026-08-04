@@ -17,6 +17,17 @@ for _, k in ipairs(keys) do
 	table.insert(config.keys, k)
 end
 
+-- WezTerm binds font size to CTRL+-/=/0 by default, duplicating the SUPER
+-- bindings. CTRL+_ also swallows 0x1f, which is `undo` in zsh's emacs keymap.
+-- Each default expands to six entries (the shifted characters _ + ) and the
+-- SHIFT|CTRL forms), so all of them need disabling; font zoom stays on SUPER.
+-- `wezterm show-keys --lua` lists the effective table.
+for _, key in ipairs({ "-", "_", "=", "+", "0", ")" }) do
+	for _, mods in ipairs({ "CTRL", "SHIFT|CTRL" }) do
+		table.insert(config.keys, { key = key, mods = mods, action = wezterm.action.DisableDefaultAssignment })
+	end
+end
+
 config.term = "xterm-256color"
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
