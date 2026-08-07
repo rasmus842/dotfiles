@@ -10,8 +10,26 @@ for _, module in ipairs({ "background", "theme" }) do
 	end
 end
 
+-- There is no Maximize key assignment; maximize/restore exist only on the Lua
+-- Window object. Native maximize sizes to the screen's visible frame, so the
+-- macOS menu bar and Dock are excluded -- unlike set_inner_size with
+-- gui.screens(), which reports raw screen bounds and would slide under them.
 local keys = {
 	{ key = "f", mods = "SUPER", action = wezterm.action.Search({ CaseInSensitiveString = "" }) },
+	{
+		key = "m",
+		mods = "SUPER|SHIFT",
+		action = wezterm.action_callback(function(window)
+			window:maximize()
+		end),
+	},
+	{
+		key = "r",
+		mods = "SUPER|SHIFT",
+		action = wezterm.action_callback(function(window)
+			window:restore()
+		end),
+	},
 }
 for _, k in ipairs(keys) do
 	table.insert(config.keys, k)
