@@ -9,7 +9,7 @@
   },
   "catppuccin": {
     "branch": "main",
-    "commit": "79e2049a0fdf7ec840f8463fe1d962c94493196b"
+    "commit": "edefef779ab08ce1a4a404713e3012b0d202bd35"
   },
   "cmp-nvim-lsp": {
     "branch": "main",
@@ -57,7 +57,7 @@
   },
   "mason-lspconfig.nvim": {
     "branch": "main",
-    "commit": "7adc933dabcc7c86ae6b07aff7ee68eac398491f"
+    "commit": "67029ccdac1ef8941e13b826417bc0ffac24cc86"
   },
   "mason-tool-installer.nvim": {
     "branch": "main",
@@ -97,11 +97,11 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "d592c1e6ad9a0a01b3d5ed3f0345d68407167181"
+    "commit": "43ed3797b266e1ee8d222e491379ad471c9d3146"
   },
   "nvim-treesitter": {
     "branch": "main",
-    "commit": "8b3a191c015dd66a92d51a112ed96af0aac13b63"
+    "commit": "c9f9ed6c1892f629ea399f4ee7905f2686fa13f2"
   },
   "nvim-ts-autotag": {
     "branch": "main",
@@ -133,7 +133,7 @@
   },
   "smart-splits.nvim": {
     "branch": "master",
-    "commit": "68861c68f1cf34dab4cdb22f094d4531cd26560a"
+    "commit": "0fe3bbd99d48458ad188c4c262c31049fa9b018c"
   },
   "telescope-fzf-native.nvim": {
     "branch": "main",
