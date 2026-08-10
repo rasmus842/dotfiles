@@ -15,6 +15,7 @@ unset brew_bin
 # User bin paths — after brew so these take precedence
 [[ -d "$HOME/bin" ]] && path=("$HOME/bin" $path)
 [[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+[[ -d "$HOME/.bun/bin" ]] && path=("$HOME/.bun/bin" $path)
 
 # asdf: shims must precede system tools (asdf >= 0.16 has no asdf.sh to source)
 asdf_shims="${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
