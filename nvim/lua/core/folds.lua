@@ -8,7 +8,6 @@ vim.opt.fillchars = {
 	fold = " ",
 	foldopen = "▾",
 	foldclose = "▸",
-	foldinner = " ",
 	foldsep = " ",
 }
 
