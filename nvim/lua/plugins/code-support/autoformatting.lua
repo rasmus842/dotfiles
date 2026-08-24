@@ -17,7 +17,7 @@ return { -- Autoformat
 		format_on_save = function(bufnr)
 			-- Filetypes without a well standardized coding style, or where
 			-- reflowing on save is disruptive. Format these with <leader>F.
-			local disable_filetypes = { c = true, cpp = true, markdown = true }
+			local disable_filetypes = { c = true, cpp = true, markdown = true, yaml = true }
 			if disable_filetypes[vim.bo[bufnr].filetype] then
 				return nil
 			end
