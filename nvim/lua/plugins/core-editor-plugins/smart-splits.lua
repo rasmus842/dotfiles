@@ -9,8 +9,6 @@ return {
 		-- carries TERM_PROGRAM=WezTerm from the parent terminal, so detection
 		-- can pick the wrong multiplexer when wezterm runs tmux
 		multiplexer_integration = "tmux",
-		-- only applies while resizing; neo-tree manages its own width
-		ignored_filetypes = { "neo-tree" },
 		at_edge = "wrap",
 	},
 	config = function(_, opts)
