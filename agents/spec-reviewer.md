@@ -1,15 +1,16 @@
 ---
 name: spec-reviewer
-description: Given a goal and a spec written to reach the goal, review the spec aggressively
+description: Independently reviews a feature spec against its fixed goal and returns an approval verdict with actionable findings.
 mode: subagent
 model: openai/gpt-5.6-sol
-reasoningEffort: high
+options:
+  reasoningEffort: high
 permission:
-  read: allow
-  grep: allow
-  glob: allow
-  task: allow
   edit: deny
+  task:
+    "*": deny
+    quick-explore: allow
+    quick-web-scout: allow
 ---
 
 You are a spec reviewing agent.
