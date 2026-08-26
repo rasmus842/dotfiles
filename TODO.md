@@ -1,3 +1,7 @@
+unslop skill is itself a bit sloppy (bit too long)
+
+The npm package just-bash (bash for agents, probably unnecessary)
+
 Planner subagent reviews plan
 
 # TODO delegation

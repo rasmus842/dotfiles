@@ -3,12 +3,10 @@ name: quick-web-scout
 description: Looks up facts, API docs, library usage, or error messages on the web and returns a distilled answer with sources. Use for quick web research instead of searching in the main context.
 mode: subagent
 model: openai/gpt-5.6-luna
-reasoningEffort: high
+options:
+  reasoningEffort: high
 permission:
-  read: deny
-  edit: deny
-  task: deny
-  bash: deny
+  "*": deny
   webfetch: allow
   websearch: allow
   "mcp_context7_*": allow
@@ -31,7 +29,7 @@ Watch for version drift: note which version of a library/API your answer applies
 # Output
 
 ```
-{Direct answer in a few senteces. For API questions, include exact signatures/options and a minimal usage example}
+{Direct answer in a few sentences. For API questions, include exact signatures/options and a minimal usage example}
 {Caveats: version constraints, deprecations, conflicting information found}
 {Sources: URLs used, one line each}
 ```

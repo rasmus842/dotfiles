@@ -1,16 +1,18 @@
 ---
 name: implementer
-description: Orchestrate the implementation of specific feature given a spec
+description: Implements exactly one approved feature spec using TDD and delegates verification to narrow subagents.
 mode: subagent
 model: openai/gpt-5.6-sol
-reasoningEffort: medium
+options:
+  reasoningEffort: medium
 permission:
-  read: allow
-  grep: allow
-  glob: allow
-  task: allow
+  task:
+    "*": deny
+    quick-explore: allow
+    quick-format: allow
+    quick-lint: allow
+    quick-test: allow
   edit:
-    "*": allow
     "spec/**": deny
 ---
 
