@@ -1,0 +1,38 @@
+{
+  "name": "my-claude-code-plugins",
+  "owner": {
+    "name": "Rasmus Zalite"
+  },
+  "metadata": {
+    "description": "Local-only marketplace. Lives at ~/dotfiles/my-claude-code-plugins; never published.",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "engineering",
+      "source": "./plugins/engineering",
+      "description": "Grill -> spec -> tickets -> implement -> review flow, plus bug diagnosis, prototyping and architecture skills.",
+      "version": "0.1.0",
+      "keywords": [
+        "planning",
+        "spec",
+        "tdd",
+        "code-review",
+        "debugging",
+        "architecture"
+      ]
+    },
+    {
+      "name": "productivity",
+      "source": "./plugins/productivity",
+      "description": "Grilling, handoffs, teaching, questionnaires and writing docs for agents.",
+      "version": "0.1.0",
+      "keywords": [
+        "grilling",
+        "handoff",
+        "teaching",
+        "writing"
+      ]
+    }
+  ]
+}
