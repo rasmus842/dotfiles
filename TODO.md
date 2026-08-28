@@ -1,4 +1,6 @@
-unslop skill is itself a bit sloppy (bit too long)
+# Unslopping
+- unslop skill is itself a bit sloppy (bit too long)
+- test out current agents.md and force agent to unslop as much as possible
 
 The npm package just-bash (bash for agents, probably unnecessary)
 
