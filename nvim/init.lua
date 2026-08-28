@@ -2,6 +2,7 @@ require("core.options")
 require("core.keymaps")
 require("core.wl-clipboard")
 require("core.folds")
+require("core.filetypes")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
