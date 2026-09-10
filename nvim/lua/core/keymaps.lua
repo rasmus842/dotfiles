@@ -23,12 +23,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Resize splits with Arrow keys
-vim.keymap.set("n", "<Up>", ":resize -2<CR>")
-vim.keymap.set("n", "<Down>", ":resize +2<CR>")
-vim.keymap.set("n", "<Left>", ":vertical resize +2<CR>")
-vim.keymap.set("n", "<Right>", ":vertical resize -2<CR>")
-
 -- Buffers
 -- vim.keymap.set("n", "<Tab>", ":lua NavigateTabBuffers('n')<CR>", { noremap = true, silent = true })
 -- vim.keymap.set("n", "<S-Tab>", ":lua NavigateTabBuffers('p')<CR>", { noremap = true, silent = true })
