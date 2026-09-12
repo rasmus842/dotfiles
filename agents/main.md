@@ -8,7 +8,7 @@ options:
 permission:
   edit: allow
   question: allow
-  "mcp_*": ask
+  "mcp_*": allow
   task: allow
   external_directory:
     "~/.bun/**": allow
@@ -17,12 +17,7 @@ permission:
   bash:
     "*": allow
     "rm *": ask
-    "git reset --hard*": ask
-    "git clean*": ask
-    "git commit*": ask
     "git push*": ask
-    "gh pr merge*": ask
-    "gh release*": ask
 ---
 
 My name is Rasmus. I am a fullstack developer.
