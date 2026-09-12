@@ -42,7 +42,8 @@
     },
     "external_directory": {
       "*": "ask",
-      "~/repos/**": "allow"
+      "~/repos/**": "allow",
+      "/tmp/opencode/**": "allow"
     },
     "webfetch": "deny",
     "websearch": "deny"
