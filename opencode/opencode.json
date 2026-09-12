@@ -10,6 +10,9 @@
       }
     }
   },
+  "plugin": [
+    "file://{env:DOTFILES}/my-claude-code-plugins/opencode.ts"
+  ],
   "default_agent": "main",
   "agent": {
     "plan": {
