@@ -14,6 +14,7 @@ return {
 			"gomod",
 			"gosum",
 			"ruby",
+			"slim",
 			"c",
 			"python",
 			"java",
