@@ -26,7 +26,8 @@ return {
 		--
 		local servers = {
 			lua_ls = require("plugins.lsp.servers.lua_ls"),
-			elixirls = require("plugins.lsp.servers.elixirls"),
+			-- see https://github.com/elixir-lang/expert
+			expert = {},
 			emmet_language_server = require("plugins.lsp.servers.emmet"),
 			tailwindcss = require("plugins.lsp.servers.tailwindcss"),
 			gopls = require("plugins.lsp.servers.gopls"),
