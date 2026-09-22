@@ -10,8 +10,9 @@
 #   spec.sh note <spec-id> <chunk-id> <text>   append a note to a chunk
 set -euo pipefail
 
-lib="$(cd "$(dirname "$0")/../../localspec-plan/scripts" 2>/dev/null && pwd)/lib.sh"
-[ -f "$lib" ] || { echo "error: cannot find localspec-plan/scripts/lib.sh" >&2; exit 1; }
+here="$(cd "$(dirname "$0")" && pwd)"
+lib="$here/lib.sh"
+[ -f "$lib" ] || { echo "error: cannot find lib.sh" >&2; exit 1; }
 . "$lib"
 
 usage() { awk 'NR>1 && /^#/ {sub(/^# ?/, ""); print; next} NR>1 {exit}' "$0"; exit "${1:-1}"; }

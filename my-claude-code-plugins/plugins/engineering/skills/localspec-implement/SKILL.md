@@ -1,87 +1,53 @@
 ---
 name: localspec-implement
-description: "Implement a persisted spec chunk by chunk"
+description: "Implement a piece of work based on a spec or set of tickets using TDD workflow"
+argument-hint: "The path tospec file(s) or plan"
 disable-model-invocation: true
 ---
 
-Work through a spec, one chunk at a time.
-Never edit spec files (`tasks.json`, `chunks`) directly.
-Use only `localspec-implement/scripts/spec.sh` script:
+You implement exactly one brief, test-first. The brief is self-contained: it carries the
+goal, the requirements, the seams to test at, the approach, and the definition of done.
+Do not go looking for a wider plan - there is none you can see.
+
+Do NOT commit, push, or open a PR. Your caller owns that. Leave unrelated working-tree
+changes exactly as you found them.
+
+# Workflow
+
+1. Read the relevant code before writing any. The brief names the seams; find them.
+2. Write one failing test for the next observable behaviour, at a seam the brief names.
+3. Delegate the test run to `quick-test` with the exact command. Confirm it fails for the
+   right reason.
+4. Write the minimum code to pass it.
+5. Delegate the test run again.
+6. Clean up what you just wrote: clear names, no dead code, no narrating comments.
+7. Repeat 2-6 until every requirement in the brief is covered.
+8. Delegate the full relevant suite to `quick-test` and the changed files to `quick-lint`.
+9. Self-review: walk the brief's requirements one by one and name the test that covers each.
+   A requirement with no test is not covered. Walk the definition of done the same way.
+
+Deviating from the brief's approach is fine when the code disagrees with it - the brief was
+written without a keyboard. Report the deviation.
+
+# When to stop and block
+
+- Block only on a decision a human owns: product behaviour, a scope question, a tradeoff with no right answer. Anything you can settle by reading the code is not a blocker - settle it and report the assumption. Never guess your way past a decision that is not yours.
+Leave your partial work in the tree when you block. Do not revert it.
+
+# Report
+
+End your final message with exactly these fields:
 
 ```
-spec.sh list [spec-id]
-spec.sh next <spec-id>
-spec.sh state <spec-id> <chunk-id> <state>
-spec.sh note <spec-id> <chunk-id> "<text>"
+OUTCOME: done | blocked | failed
+REQUIREMENTS: per requirement id - covered, and the test that covers it; or not covered, and why
+VERIFICATION: the exact test and lint commands run, and their results
+DEVIATIONS: where the code disagreed with the approach, and what you did instead ("none" if none)
+NOTES-FOR-NEXT: what whoever picks up the following piece of work needs to know
+QUESTIONS: blocked only - the decision needed, the options you considered, why it is not yours
+TREE-STATE: blocked or failed only - what you left in the working tree, and whether tests are green
 ```
 
-## Start of session
+`OUTCOME: done` means the tests and lint actually passed and you saw them pass. If you did
+not see them pass, the outcome is `failed`.
 
-If the user did not name a spec, run `spec.sh list` and ask which one.
-
-Run `spec.sh next <spec-id>`. If it returns a chunk in state `implementing`, a previous run
-died: reset it to `ready` and start the chunk from the top. Do not assume partial work landed -
-check the working tree before writing anything.
-
-## The loop
-
-Repeat until `next` reports `ALL DONE` or the next chunk is not `ready`.
-
-### 1. Load context
-
-Read `spec.md` in full, then the chunk file. The chunk deliberately does not restate the
-spec; you need both. Read the chunk's notes from `spec.sh next` - earlier chunks leave
-warnings there.
-
-### 2. Claim it
-
-```
-spec.sh state <spec-id> <chunk-id> implementing
-```
-
-A chunk in `wip` or `rfc` is NOT implementable. Stop and tell the user.
-
-### 3. Implement
-
-Follow the chunk's Approach, at the seams the spec's Architecture section names. Write the
-tests the chunk's Tests section describes.
-
-Deviating from the Approach is fine when the code disagrees with it - the plan was written
-without the keyboard. Record the deviation with `spec.sh note` and, if it changes a decision
-that outlives this chunk, fix `spec.md` too.
-
-### 4. Handle unknowns
-
-- **Blocking** (you cannot proceed without a human decision): append the question to
-  `questions.md`, set the chunk to `rfc`, stop and tell the user what you need. Do not guess
-  your way past a decision that is the user's to make.
-- **Non-blocking**: record it in the chunk's Risks and Open Questions section together with
-  the assumption you took, and continue.
-
-### 5. Verify
-
-Work through the chunk's Definition of Done item by item. Run the tests and whatever the
-project uses to check the build. **Do not mark a chunk `done` on unverified work** - if a
-check fails and you cannot fix it, note why and leave the chunk `implementing` or move it to
-`rfc`.
-
-### 6. Close it out
-
-```
-spec.sh note <spec-id> <chunk-id> "<what the next chunk needs to know>"
-spec.sh state <spec-id> <chunk-id> done
-```
-
-Append anything the next chunk should know to the chunk file's Notes section: surprises,
-deviations, things that turned out to be harder than the spec assumed.
-
-### 7. Next
-
-Report to the user what landed and what is next, then continue with the following chunk.
-Commit between chunks if the user wants commits - each chunk is a coherent unit of work.
-
-## Finishing
-
-When every chunk is `done`, check the spec's own Definition of Done, review `questions.md`
-for anything still open, and tell the user. Leave the spec directory in place; `localspec/` is
-gitignored.

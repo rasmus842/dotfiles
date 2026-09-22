@@ -1,5 +1,0 @@
-interface:
-  display_name: "Localspec Plan"
-  short_description: "Plan work into a localspec: requirements, architecture, chunks"
-policy:
-  allow_implicit_invocation: false

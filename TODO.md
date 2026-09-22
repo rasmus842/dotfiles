@@ -155,3 +155,44 @@ now: how to pick up PR, comments etc
 - perhaps in future let agent merge since I approved already
 - goes into merge queue?
 - other pending pr-s should fail if conflicts arise
+
+# codebase-design skill (work-in-progress)
+
+`tdd` used to link to it for the seam/interface vocabulary. Link removed — the skill lives in
+`plugins/work-in-progress/`, so it may not be installed. Decide its fate, then relink.
+
+## Is it useful?
+
+Yes, but only about a third of it.
+
+Worth keeping:
+
+- The glossary: module, interface, implementation, depth, seam, adapter, leverage, locality.
+  This is the real value. `tdd` says "seam" constantly and only defines it in one line.
+- "The interface is the test surface" — the sharpest idea in the file, and it is a TDD idea.
+- "One adapter = hypothetical seam. Two adapters = real one." Directly answers "should I mock
+  this?", which is `tdd/mocking.md`'s whole job.
+- The deletion test.
+
+Cut or move:
+
+- The deep-vs-shallow ASCII boxes. Decoration, says nothing the prose doesn't.
+- "Designing for testability" TypeScript examples. Overlaps `tdd/tests.md` and `tdd/mocking.md`.
+- "Rejected framings". Meta-commentary; only useful when someone argues the definitions.
+- `DESIGN-IT-TWICE.md` spawns parallel subagents. That is a session, not a reference — it does
+  not belong behind a "consult this for vocabulary" link.
+
+## Relation to other skills
+
+- **tdd**: wants the glossary only. Right shape is a small `SEAMS.md`-style reference, not a
+  114-line design skill.
+- **ponytail / implementer ladder**: overlaps. "Minimize complexity", "no unrequested
+  abstractions", the deletion test and YAGNI are the same rule in three vocabularies.
+  Reconcile before promoting out of work-in-progress, or they will drift apart.
+- **code-review / simplify**: depth-and-seam is a review lens more than an implement-time one.
+  Probably its better home.
+
+## Plan
+
+Split it: glossary becomes a tiny reference that `tdd` and `code-review` both point at;
+`DEEPENING.md` + `DESIGN-IT-TWICE.md` become their own user-invoked design skill.

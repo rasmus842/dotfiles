@@ -1,6 +1,6 @@
 # Specs Reference
 
-The on-disk contract shared by `/localspec-plan` (planning) and `/localspec-implement` (execution).
+The on-disk contract shared by planning and execution.
 `localspec/` is gitignored and solo-only; teams use openspec where it is available.
 
 ## Layout
@@ -70,14 +70,14 @@ Reset it to `ready` and re-read the chunk from the top; do not assume partial wo
 
 ## Scripts
 
-Planning (`/localspec-plan`):
+Planning:
 
-- `localspec-plan/scripts/new-spec.sh <spec-id> [title]` - scaffold a spec, ensure `localspec/` is gitignored
-- `localspec-plan/scripts/add-chunk.sh <spec-id> <slug> <title>` - create the next chunk file and its `tasks.json` entry
+- `scripts/new-spec.sh <spec-id> [title]` - scaffold a spec, ensure `localspec/` is gitignored
+- `scripts/add-chunk.sh <spec-id> <slug> <title>` - create the next chunk file and its `tasks.json` entry
 
-Execution (`/localspec-implement`):
+Execution:
 
-- `localspec-implement/scripts/spec.sh list [spec-id]` - specs and their progress
-- `localspec-implement/scripts/spec.sh next <spec-id>` - the first chunk that is not `done`
-- `localspec-implement/scripts/spec.sh state <spec-id> <chunk-id> <state>` - move a chunk
-- `localspec-implement/scripts/spec.sh note <spec-id> <chunk-id> "<text>"` - append a note
+- `scripts/spec.sh list [spec-id]` - specs and their progress
+- `scripts/spec.sh next <spec-id>` - the first chunk that is not `done`
+- `scripts/spec.sh state <spec-id> <chunk-id> <state>` - move a chunk
+- `scripts/spec.sh note <spec-id> <chunk-id> "<text>"` - append a note

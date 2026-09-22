@@ -1,5 +1,0 @@
-interface:
-  display_name: "Localspec Implement"
-  short_description: "Work through a localspec chunk by chunk"
-policy:
-  allow_implicit_invocation: false

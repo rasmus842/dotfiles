@@ -26,7 +26,7 @@ implementation.
 ### 2. Scaffold
 
 ```
-localspec-plan/scripts/new-spec.sh <spec-id> "<title>"
+scripts/new-spec.sh <spec-id> "<title>"
 ```
 
 `<spec-id>` is the ticket key when the work has one, otherwise `YYYY-MM-DD-<slug>`. The
@@ -60,7 +60,7 @@ they will be implemented in. There is no dependency graph.
 For each chunk, in order:
 
 ```
-localspec-plan/scripts/add-chunk.sh <spec-id> <slug> "<title>"
+scripts/add-chunk.sh <spec-id> <slug> "<title>"
 ```
 
 then fill in the created file, which follows `CHUNK_TEMPLATE.md`. Each chunk starts in state
@@ -76,19 +76,19 @@ requirements it covers. Ask:
 - Should any chunks be merged or split?
 
 Iterate. Anything you need the user to answer goes in `questions.md` and the chunk goes to
-`rfc` (`localspec-implement/scripts/spec.sh state <spec-id> <chunk-id> rfc`).
+`rfc` (`scripts/spec.sh state <spec-id> <chunk-id> rfc`).
 
 ### 7. Mark approved chunks ready
 
 Approved chunks move to `ready`:
 
 ```
-localspec-implement/scripts/spec.sh state <spec-id> <chunk-id> ready
+scripts/spec.sh state <spec-id> <chunk-id> ready
 ```
 
 Only `ready` chunks get implemented. Leave anything still under discussion in `wip` or `rfc`.
 
-Tell the user the spec is ready and that `/localspec-implement <spec-id>` will work through it.
+Tell the user the spec is ready.
 
 ## Improving an existing spec
 
