@@ -5,8 +5,8 @@ if os.getenv("WAYLAND_DISPLAY") then
 	vim.g.clipboard = {
 		name = "wl-clipboard",
 		copy = {
-			["+"] = "wl-copy --type=clipboard",
-			["*"] = "wl-copy --type=primary",
+			["+"] = "wl-copy",
+			["*"] = "wl-copy --primary",
 		},
 		paste = {
 			["+"] = "wl-paste --no-newline",
