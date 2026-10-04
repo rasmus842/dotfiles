@@ -100,4 +100,6 @@ for zsh_hl in "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlig
 done
 unset zsh_hl
 
+source "$DOTFILES/zsh/theme.zsh"
+
 eval "$(starship init zsh)"
