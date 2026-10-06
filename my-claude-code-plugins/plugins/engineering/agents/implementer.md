@@ -2,7 +2,7 @@
 name: implementer
 description: Implements code given spec, requirements, or user prompt.
 model: opus
-tools: Bash, Read, Write, Edit, Agent, Skill
+tools: Bash, Read, Write, Edit, Skill
 skills:
   - tdd
   - commit

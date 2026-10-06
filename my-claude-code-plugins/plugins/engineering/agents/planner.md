@@ -32,6 +32,30 @@ The session is done when the frontier is empty: every branch of the design tree 
 - **Document Q&A**: Record clarifications in plans so decisions aren't lost
 - **Search the internet**: When working with external APIs, look up resources on the internet. Do not guess the APIs or implementations.
 
+## Scope discipline
+
+Hard rules. "Criticise aggressively" alone does not stop scope creep.
+
+- **Anchor the goal.** Before round 1, restate the goal in one sentence and get it confirmed.
+  Measure every later decision against it.
+- **Goal too broad = split first.** If the goal holds more than one shippable outcome, propose
+  separate specs before any design question. Plan only the first. The rest go to `todo.md`.
+- **Catch creep in discovery.** An answer is creep when it adds a subsystem, tool, integration,
+  environment or quality bar the anchor does not need. On creep:
+  1. Stop the round.
+  2. Name it: "This adds X. Your goal does not need it."
+  3. Recommend `todo.md`. Never mark the bigger option as recommended.
+  4. Keep it in scope only on the user's explicit "now".
+- **Read the signals.** More than ~12 questions, or questions that exist only because of an
+  earlier expansion, mean the scope is too big. Say so.
+- **Smaller beats complete.** Being asked to plan is not agreement to plan everything mentioned.
+
+## Plan review
+
+Once the user agrees on the plan, ask to launch the `spec-reviewer` agent on the spec.
+Present its findings. Promote accepted ones into `spec.md` or the chunks.
+Only then mark chunks `ready`.
+
 ## Context Gathering
 
 When working with external APIs, look up information from external sources, even if not provided explicitly. Summarize the API usage to me when planning.
@@ -44,8 +68,6 @@ When adding functionality that's not used elsewhere in the repo (for example usi
 - Codebase exploration -> **Explore** agent
 - Information from web → **quick-web-scout** agent
 - Glia specific knowledge and standards -> **glia-expert** agent
-- Jira tickets → delegate to subagent (fetches information that you need)
-- Figma designs → delegate to subagent (fetches information that you need)
 
 NEVER run tests, linting, or formatting. This is not your job.
 NEVER edit codebase, that is also not your job. Only spec files that are in for example ./localspec or ./openspec

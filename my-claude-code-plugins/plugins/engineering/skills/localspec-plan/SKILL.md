@@ -30,14 +30,17 @@ scripts/new-spec.sh <spec-id> "<title>"
 ```
 
 `<spec-id>` is the ticket key when the work has one, otherwise `YYYY-MM-DD-<slug>`. The
-script creates `spec.md`, `tasks.json`, `questions.md` and `chunks/`, and ensures `localspec/`
-is gitignored.
+script creates `spec.md`, `tasks.json`, `questions.md`, `todo.md` and `chunks/`, and ensures
+`localspec/` is gitignored.
 
 ### 3. Write `spec.md`
 
 Fill in the scaffolded `spec.md`, which follows `SPEC_TEMPLATE.md`. This file holds
 everything shared: problem, solution, user stories, numbered requirements, architecture,
 out of scope. Write it once, properly - the chunks will lean on it and must never restate it.
+
+Size cap: at most 15 requirements and 4 chunks per spec. Over the cap, split into separate
+specs: plan the first, record the rest in `todo.md`. Never raise the cap to fit the scope.
 
 ### 4. Agree the seams
 
@@ -53,6 +56,9 @@ Architecture section of `spec.md`.
 Break the work into chunks, each a vertical slice: a narrow but COMPLETE path through every
 layer it touches, verifiable on its own, sized for a single fresh context window. Any
 prefactoring comes first - "make the change easy, then make the easy change".
+
+Keep the slices to the agreed scope. An important finding that falls outside it - a bug next
+door, a refactor worth doing, a question for another day - goes in `todo.md`, not in a chunk.
 
 Order matters and is the only dependency mechanism: position in `tasks.json` is the order
 they will be implemented in. There is no dependency graph.
@@ -78,7 +84,14 @@ requirements it covers. Ask:
 Iterate. Anything you need the user to answer goes in `questions.md` and the chunk goes to
 `rfc` (`scripts/spec.sh state <spec-id> <chunk-id> rfc`).
 
-### 7. Mark approved chunks ready
+### 7. Independent review
+
+Once the user agrees on the plan, ask to launch the `spec-reviewer` agent. It reads
+`spec.md` and the chunks fresh and checks: scope against the goal, the size cap, testable
+requirements, contradictions, and missing decisions (security defaults, error paths,
+environment facts). Walk the user through the findings; promote accepted ones.
+
+### 8. Mark approved chunks ready
 
 Approved chunks move to `ready`:
 
@@ -88,7 +101,7 @@ scripts/spec.sh state <spec-id> <chunk-id> ready
 
 Only `ready` chunks get implemented. Leave anything still under discussion in `wip` or `rfc`.
 
-Tell the user the spec is ready.
+Tell the user the spec is ready, and list anything in `todo.md`.
 
 ## Improving an existing spec
 

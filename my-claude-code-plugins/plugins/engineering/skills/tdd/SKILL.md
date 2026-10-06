@@ -71,9 +71,9 @@ Where "agreed" comes from depends on who invoked this skill:
 **NEVER run directly in main context:**
 
 - exploration → **Explore** agent
-- Tests → **quick-test** agent
-- Linting → **quick-lint** agent
-- Formatting → **quick-format** agent
+- Tests → **run-test** skill that forks to subagent
+- Linting → **run-lint** skill that forks to subagent
+- Formatting → **run-format** skill that forks to subagent
 
 ## When to stop and block
 

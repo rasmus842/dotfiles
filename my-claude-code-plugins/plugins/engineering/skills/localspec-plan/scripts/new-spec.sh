@@ -26,6 +26,7 @@ tpl="$(cd "$(dirname "$0")/.." && pwd)"
 mkdir -p "$dir/chunks"
 sed -e '/^<spec-template>$/d' -e '/^<\/spec-template>$/d' "$tpl/SPEC_TEMPLATE.md" > "$dir/spec.md"
 cp "$tpl/QUESTIONS_TEMPLATE.md" "$dir/questions.md"
+cp "$tpl/TODO_TEMPLATE.md" "$dir/todo.md"
 jq -n --arg spec "$id" --arg title "$title" --arg created "$(date -u +%Y-%m-%d)" \
   '{spec: $spec, title: $title, created: $created, chunks: []}' > "$dir/tasks.json"
 
@@ -37,5 +38,5 @@ if ! { [ -f "$ignore" ] && grep -qx 'localspec/' "$ignore"; }; then
 fi
 
 printf 'created %s\n' "$dir"
-printf '  %s/spec.md\n  %s/tasks.json\n  %s/questions.md\n  %s/chunks/\n' "$dir" "$dir" "$dir" "$dir"
+printf '  %s/spec.md\n  %s/tasks.json\n  %s/questions.md\n  %s/todo.md\n  %s/chunks/\n' "$dir" "$dir" "$dir" "$dir" "$dir"
 printf 'next: fill in spec.md, then add chunks with add-chunk.sh %s <slug> "<title>"\n' "$id"

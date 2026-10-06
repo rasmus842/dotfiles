@@ -10,6 +10,7 @@ localspec/specs/<spec-id>/
   spec.md         # problem, solution, user stories, requirements, architecture, out of scope
   tasks.json      # ordered chunk index + state + notes  <- the ONLY source of truth for state
   questions.md    # append-only question log
+  todo.md         # findings deferred out of this spec during planning
   chunks/
     01-<slug>.md  # how to implement one vertical slice
     02-<slug>.md
@@ -66,6 +67,8 @@ Reset it to `ready` and re-read the chunk from the top; do not assume partial wo
   A non-blocking unknown: record it in the chunk's Risks section with the assumption taken,
   and continue.
 - An answered question must be promoted into `spec.md` or the chunk before it counts.
+- An important finding outside this spec's scope, found while planning: append to `todo.md`
+  and do not plan for it. Only the planning agent writes `todo.md`.
 - Specs are living documents: when implementation contradicts the spec, fix the spec.
 
 ## Scripts
